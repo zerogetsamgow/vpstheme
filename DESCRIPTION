@@ -5,21 +5,23 @@ Version: 0.2.0
 Authors@R: c(
     person("Sam", "Gow", email = "sam.gow@gmail.com", role = c("aut", "cre"))
   )
-Description: More about what it does (maybe more than one line).
-    Continuation lines should be indented.
+Description: The main purpose of vpstheme is to enable R users in the Victorian Public Service to use the colours and fonts defined in the [Brand Victoria Guidelines](https://www.vic.gov.au/brand-victoria-guidelines) to create compliant visualisations in ggplot.
 License: CC BY 4.0
 Encoding: UTF-8
 LazyData: true
 URL: https://github.com/zerogetsamgow/vpstheme
 BugReports: https://github.com/zerogetsamgow/vpstheme/issues
-Depends: R (>= 3.5)
-RoxygenNote: 7.3.2
-Imports: 
+Depends: 
     curl,
     jsonlite,
+    R (>= 3.5)
+RoxygenNote: 7.3.2
+Imports: 
     ggplot2,
     ggthemes,
     palettes,
     showtext,
     stringdist,
-    sysfonts
+    sysfonts,
+    dplyr,
+    stringr
