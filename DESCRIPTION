@@ -1,18 +1,25 @@
 Package: vpstheme
 Type: Package
-Title: What the Package Does (Title Case)
-Version: 0.1.0
+Title: A collection of themes and functions for R users in the VPS
+Version: 0.2.0
 Authors@R: c(
-    person(
-      "Jane", "Doe",
-      email = "jane@example.com",
-      role = c("aut", "cre")
-    )
+    person("Sam", "Gow", email = "sam.gow@gmail.com", role = c("aut", "cre"))
   )
 Description: More about what it does (maybe more than one line).
     Continuation lines should be indented.
-License: What license is it under?
+License: CC BY 4.0
 Encoding: UTF-8
 LazyData: true
 URL: https://github.com/zerogetsamgow/vpstheme
 BugReports: https://github.com/zerogetsamgow/vpstheme/issues
+Depends: R (>= 3.5)
+RoxygenNote: 7.3.2
+Imports: 
+    curl,
+    jsonlite,
+    ggplot2,
+    ggthemes,
+    palettes,
+    showtext,
+    stringdist,
+    sysfonts
