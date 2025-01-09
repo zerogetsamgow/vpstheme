@@ -37,7 +37,7 @@ Using these allows you to implement the correct format for non-data components o
 
 The following example illustrates how `theme_vps_dhs()` implements the guidelines with discussion below.
 
-```{r col_example, warnings = FALSE, out.height="400px", out.width="700px"}
+```{r col_example, warnings = FALSE, fig.height = 4, fig.width = 6}
 library(vpstheme)
 
 # Create tibble of data for example
@@ -54,7 +54,11 @@ ggplot(
   ) +
   geom_col(fill = bv.pink) +
   # With data labels
-  geom_text(aes(label = accidents), size = 5, nudge_y = 2)+
+  geom_text(
+    aes(label = accidents), 
+    colour = bv.charcoal,
+    size = 5, 
+    nudge_y = 2)+
   # x and y continuous scales, with some formatting
   scale_x_continuous(name = NULL, breaks = 2020:2024)+
   scale_y_continuous(name = "Number of car accidents", 
@@ -108,7 +112,7 @@ Only use as many labels as necessary for the graph to be interpreted and use val
 You should avoid rotating axis labels. Rotate the graph (instead of the text) if x-axis (categorical) labels are too long to fit side-by-side. We do this using the `coord_flip()` as shown in the example below.
 
 
-```{r long_titles, warnings = FALSE, out.height="400px", out.width="700px"}
+```{r long_titles, warnings = FALSE, fig.height = 4, fig.width = 6}
 # Create data tibble
 airport_flights = 
   tibble(
@@ -134,6 +138,7 @@ ggplot(
   labs(title="Flights at major international airports")+
   theme_vps_dh()
 ```
+
 Departmental guidance requires y-axis labels values to not have numerous zeros, e.g. values should be expressed in millions rather than have 1,000,000 and so forth on the chart. We can use the `label_number()` function from the ***scales*** package to do this, as shown above.
 
 ### 4. Scales
@@ -153,7 +158,7 @@ We use a slightly more complicated set of example data to illustrate legends.
 
 By default, `theme_vps_dh()` places the legend below the graph as shown below, but this can be adjusted using the `theme()` function.
 
-```{r col_example_full_colour, warnings = FALSE, out.height="400px", out.width="700px"}
+```{r col_example_full_colour, warnings = FALSE, fig.height = 4, fig.width = 6}
 # Create tibble of data for examples
 car_accidents = 
   tibble(
@@ -180,6 +185,7 @@ ggplot(
        subtitle = "This example shows how to add color using `scale_fill_dh`.")+
   theme_vps_dh()
 ```
+
 
 Departmental guidelines recommend legends be placed as close as possible to content: below the title, close to the graph data (for example, at the end of a line) but not cluttering the plot area.
 

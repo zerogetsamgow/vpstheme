@@ -4,7 +4,7 @@ library(tibble)
 library(stringr)
 library(ggplot2)
 
-## ----col_example, warnings = FALSE, out.height="400px", out.width="700px"-----
+## ----col_example, warnings = FALSE, fig.height = 4, fig.width = 6-------------
 library(vpstheme)
 
 # Create tibble of data for example
@@ -21,7 +21,11 @@ ggplot(
   ) +
   geom_col(fill = bv.pink) +
   # With data labels
-  geom_text(aes(label = accidents), size = 5, nudge_y = 2)+
+  geom_text(
+    aes(label = accidents), 
+    colour = bv.charcoal,
+    size = 5, 
+    nudge_y = 2)+
   # x and y continuous scales, with some formatting
   scale_x_continuous(name = NULL, breaks = 2020:2024)+
   scale_y_continuous(name = "Number of car accidents", 
@@ -34,7 +38,7 @@ ggplot(
   # And DH styles applied.
   theme_vps_dh()
 
-## ----long_titles, warnings = FALSE, out.height="400px", out.width="700px"-----
+## ----long_titles, warnings = FALSE, fig.height = 4, fig.width = 6-------------
 # Create data tibble
 airport_flights = 
   tibble(
@@ -60,7 +64,7 @@ ggplot(
   labs(title="Flights at major international airports")+
   theme_vps_dh()
 
-## ----col_example_full_colour, warnings = FALSE, out.height="400px", out.width="700px"----
+## ----col_example_full_colour, warnings = FALSE, fig.height = 4, fig.width = 6----
 # Create tibble of data for examples
 car_accidents = 
   tibble(
