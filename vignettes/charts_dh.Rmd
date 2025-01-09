@@ -1,0 +1,213 @@
+---
+title: "Selecting and presenting graphs in R."
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Selecting and presenting graphs in R.}
+  %\VignetteEncoding{UTF-8}
+  %\VignetteEngine{knitr::rmarkdown}
+editor_options: 
+  markdown: 
+    wrap: sentence
+---
+
+```{r chart_setup, include=FALSE}
+library(dplyr)
+library(tibble)
+library(stringr)
+library(ggplot2)
+```
+
+# Introduction
+
+***vpstheme*** is designed to help R users in the Vicorian Public Services produce {gglot2} objects that comply with Brand Victoria and departmental guidelines simply.
+
+This vignette was written for staff in the Department of Health.
+
+This vignettes is a compliment to and is informed by the document `'Selecting and presenting graphs Guidelines for departmental staff and graphic designers'` that can be found on the departmental intranet.
+
+This vignette assumes the reader is familiar with making graphs in r using the ***ggplot2*** package.
+
+## Using theme_vps_dhs to format non-data components
+
+A theme comprises information on the colours, fonts and line styles you want the base of your plot to use.
+
+***vpstheme*** exports several themes including `theme_vps_dh()` and colour palettes including `dh_colours`.
+
+Using these allows you to implement the correct format for non-data components of your graphs, including titles, axes, etc.
+
+The following example illustrates how `theme_vps_dhs()` implements the guidelines with discussion below.
+
+```{r col_example, warnings = FALSE, out.height="400px", out.width="700px"}
+library(vpstheme)
+
+# Create tibble of data for example
+car_accidents = 
+  tibble(
+    year = c(2020,2021,2022,2023,2024),
+    accidents = c(10,	5,	45,	10,	16)
+  )
+
+## basic example of a column plot
+ggplot(
+  data=car_accidents,
+  aes(x=year, y = accidents)
+  ) +
+  geom_col(fill = bv.pink) +
+  # With data labels
+  geom_text(aes(label = accidents), size = 5, nudge_y = 2)+
+  # x and y continuous scales, with some formatting
+  scale_x_continuous(name = NULL, breaks = 2020:2024)+
+  scale_y_continuous(name = "Number of car accidents", 
+                     breaks = seq(0,50,by = 10),
+                     limits = c(0,50),
+                     expand = c(0,0,.1,.1))+
+  # Labels added.
+  labs(title = "Annual car accidents",
+       caption = "Source: Data created arbitrarily.")+
+  # And DH styles applied.
+  theme_vps_dh()
+```
+
+### 1. Graph titles, subtitles and captions.
+
+We can add titles, subtitles and captions to ggplot objects using `lab()`. The example above adds a title and a caption.
+
+Departmental guidance requires the title be placed in top left so it can be read before the y-axis label and should give a clear idea what the graph is about. This is handled by `theme_vps_dh()` if you choose to add a title.
+
+-   Axis labels (tick-mark labels) may explain the time category enough to preclude the need for this in the title.
+
+> Note: Departmental guidelines require the graph title and its figure number be included as text in the document the graph is placed in – not on the graph artwork as shown here.
+
+Including the source is important as it can provide credibility. This is referred to as a caption in `labs()`.
+
+> Note: Source/notes should be included as text in the document the graph is placed in – not on the graph artwork as shown here. 
+
+
+
+### 3. Axis titles
+
+The Y-axis title should be top left so it is read before the axis labels.
+
+This is achieved in `theme_vps_dh` by setting `hjust = .8` for axis.text.y via `element_text()`.
+This shifts the axis title justification to be closer to the top of the axis.
+
+Axis titles may not be needed if the graph title and the tick mark labels provide sufficient information.
+As seen in the example, the X-axis title is not shown as each column is obviously a year value.
+This adjustment is made by setting `name = NULL` in `scale_x_*()` rather than being a feature of `theme_vps_dh.`
+
+### 2. Axis labels
+
+Departmental guidance requires axis labels be muted (light) relative to the data so they don’t overwhelm, or detract from, the message/story.
+
+This is achieved in `theme_vps_dh()` using the `lighten()`function from the ***colorspace*** package.
+
+The axis labels are 25 per cent lighter than the default text (for white backgrounds).
+
+Only use as many labels as necessary for the graph to be interpreted and use values that represent equal numeric intervals.
+
+You should avoid rotating axis labels. Rotate the graph (instead of the text) if x-axis (categorical) labels are too long to fit side-by-side. We do this using the `coord_flip()` as shown in the example below.
+
+
+```{r long_titles, warnings = FALSE, out.height="400px", out.width="700px"}
+# Create data tibble
+airport_flights = 
+  tibble(
+    city = c("London",  "Milan",    "Paris",    "Prague",   "Lisbon"),
+    flights = c(45e6, 16e6,  10e6, 10e6, 5e6)
+  )
+
+## example plot
+ggplot(
+  data = airport_flights, 
+  aes(
+    x = reorder(city, flights), 
+    y = flights)) +
+  geom_col(fill = bv.pink) +
+  # Convert from columb to horizontal bar using coord_flip
+  coord_flip()+
+  # geom_text(aes(label = round(flights/1e6)), size = 5, nudge_y = 1)+
+  scale_x_discrete(name = NULL) +
+  scale_y_continuous(
+    name = "Flights per year, millions", 
+    labels = scales::label_number(scale = 1/1e6),  
+    limits = c(0,50e6), expand = c(0,0,.1,.1))+
+  labs(title="Flights at major international airports")+
+  theme_vps_dh()
+```
+Departmental guidance requires y-axis labels values to not have numerous zeros, e.g. values should be expressed in millions rather than have 1,000,000 and so forth on the chart. We can use the `label_number()` function from the ***scales*** package to do this, as shown above.
+
+### 4. Scales
+
+Accurately representing scales is important to ensure the data is telling the story you intend and not a different or misleading story.
+
+Departmental guidance suggests quantitative scales (most often the vertical scale) should start at 0 on bar graphs.
+This is consistent with the `geometry of graphs` that governs `ggplot()` - limiting the scale to values above zero will prevent bars from showing.
+
+The decision to start a scale at 0 on other graphs will depend on the situation.
+
+### 5. Legends
+
+Legends are not required if only one series of values in the graph, as per the example above, and may not be required if data components can be labelled – this is preferred – refer ‘data labels’ below.
+
+We use a slightly more complicated set of example data to illustrate legends.
+
+By default, `theme_vps_dh()` places the legend below the graph as shown below, but this can be adjusted using the `theme()` function.
+
+```{r col_example_full_colour, warnings = FALSE, out.height="400px", out.width="700px"}
+# Create tibble of data for examples
+car_accidents = 
+  tibble(
+    month = rep(c("Jan","Feb","Mar","Apr","May"),4),
+    freeway = c(rep("M1",5),rep("M2",5),rep("M3",5),rep("M4",5)),
+    accidents = c(10, 5, 45, 10,	16, 
+                  20, 10, 40, 12, 10, 
+                  30, 15, 25, 14, 18, 
+                  25, 20, 15, 18, 10)
+  ) |> 
+  mutate(month = factor(month, levels = month.abb),
+         freeny = factor(freeway))
+
+## example of multi colour column plot
+ggplot(
+  data = car_accidents,
+  aes(x = month, y = accidents, fill = freeway)) +
+  # by default multi category columns will be stacked, we can adjust using `position`
+  geom_col(position = position_dodge2()) +
+  scale_x_discrete(name = NULL)+
+  scale_y_continuous(name = "Number of accidents", expand = c(0,0))+
+  scale_fill_dh(palette = "pinks", name = NULL)+
+  labs(title="Annual car accidents on major motor ways",
+       subtitle = "This example shows how to add color using `scale_fill_dh`.")+
+  theme_vps_dh()
+```
+
+Departmental guidelines recommend legends be placed as close as possible to content: below the title, close to the graph data (for example, at the end of a line) but not cluttering the plot area.
+
+Legend and plot margins in `theme_vps_dh()` have been set to achieve the recommended spacing, but can alos be adjusted using `theme()`.
+
+List legend items in the same sequence as the bars they refer to, or matching the order of the end points on a line graph.
+We provide examples of how to achieve this below.
+
+Ensure high contrast between values, by using `scale_*_dh()` as shown above.
+
+### 6.Data labels
+
+Axis labels alone may be enough if there are lots of categories (for example, bars), the differences are very clear, and individual values are not imperative.
+
+Data labels should be used in preference to a legend. We can do that with `geom_text()` as shown in the first example above. We will present more interesting cases later, for example, at the end of a line.
+
+-   Place data labels on the left instead of the ends (right) of horizontal bars so the value of each bar is next to its axis/tick-mark label. This is easier to read vertically, as they all line up under each other, allows for quick, easy comparisons and doesn’t force the eye to jump back and forth, right to left.
+-   Highlight a data label using different coloured text (or bold/darker shade) – so the emphasis remains clear in the absence of colour.
+
+
+
+
+
+### 7. Gridlines
+
+May not be required. However, should you choose to include them
+
+However• Include in bar and line graphs to help users read and compare values if differences in data are hard to perceive.
+• Should be muted (light) relative to the data so they don’t overwhelm, or detract from, the message/story.
+
+

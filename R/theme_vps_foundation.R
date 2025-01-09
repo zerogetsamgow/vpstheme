@@ -43,7 +43,12 @@ theme_vps_foundation <- function(base_size = 15, base_family = "Rubik") {
           size = ggplot2::rel(1.2),
           face = "bold",
           lineheight = 0.5,
-          margin = ggplot2::margin(0, 0, .5, 0, "cm")
+          margin = ggplot2::margin(0, 0, 1, 0, "mm")
+        ),
+      plot.subtitle =
+        ggplot2::element_text(
+          lineheight = 0.5,
+          margin = ggplot2::margin(0, 0, 1, 0, "mm")
         ),
       legend.text =
         ggplot2::element_text(
@@ -78,11 +83,13 @@ theme_vps_foundation <- function(base_size = 15, base_family = "Rubik") {
         ggplot2::element_blank(),
       legend.key.size = ggplot2::unit(4,"mm"),
       legend.position = "bottom",
-      legend.margin = ggplot2::margin(.1, .1, .1, .1, "cm"),
+      legend.box.spacing = unit(2,"mm"),
+      legend.margin = ggplot2::margin(1, 1, 0, 1, "mm"),
       # Define foundation margin parameters
-      plot.margin = ggplot2::margin(.5, .5, 0, .5, "cm"),
+      plot.margin = ggplot2::margin(2, 2, 2, 2, "mm"),
       # Define foundation title parameters
-      plot.title.position = "plot"
+      plot.title.position = "plot",
+
     )
 
 }

@@ -13,13 +13,15 @@
 #' @importFrom ggplot2 element_text
 #' @importFrom ggplot2 element_rect
 #' @importFrom dplyr if_else
-
+#' @importFrom colorspace darken
+#' @importFrom colorspace lighten
 
 theme_vps_dh <-
   function(
     base_colour =
       c("white","pink","orange","blue","red"),
-    base_size = 15) {
+    base_size = 15,
+    show_gridlines = FALSE) {
 
     # Test to see if base_colour is defined, if not set to white.
     if(is.null(base_colour)) {base_colour = "white"}
@@ -42,7 +44,12 @@ theme_vps_dh <-
         vpstheme::bv.charcoal,
         vpstheme::bv.smoke
     )
-
+    .axis_text_colour =
+      dplyr::if_else(
+        base_colour == "white",
+        colorspace::lighten(vpstheme::bv.charcoal,.25),
+        vpstheme::bv.smoke
+      )
     .line_colour =
       dplyr::if_else(
         base_colour == "white",
@@ -54,19 +61,36 @@ theme_vps_dh <-
   thm <- vpstheme::theme_vps_foundation()
 
   # Set colours and sizes to match parameters
-  thm +
+  thm = thm +
     ggplot2::theme(
       text =
         ggplot2::element_text(
           size = base_size,
           colour = .text_colour),
+      axis.title =
+        ggplot2::element_text(
+          hjust = 0.8
+        ),
+      axis.text =
+        ggplot2::element_text(
+          colour = .axis_text_colour),
       plot.background =
         ggplot2::element_rect(
           fill = .base_colour,
           colour=NA),
       axis.line =
         ggplot2::element_line(
-          colour = .line_colour),
-    # axis.text = ggplot2::element_text(colour = .text_colour)
+          linewidth = .5,
+          colour = .line_colour)
     )
+
+  if(show_gridlines) {
+    thm = thm +
+      ggplot2::theme(
+        panel.grid.major.y = ggplot2::element_line(
+          colour = .axis_text_colour)
+      )
+
+  }
+  return(thm)
 }

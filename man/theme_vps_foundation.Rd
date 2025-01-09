@@ -29,6 +29,8 @@ Other vpstheme:
 \code{\link{install_rubik_fonts}()},
 \code{\link{install_vic_fonts}()},
 \code{\link{make_tints}()},
+\code{\link{scale_colour_dh}()},
+\code{\link{scale_fill_dh}()},
 \code{\link{theme_vps_dffh}()},
 \code{\link{theme_vps_dh}()}
 }

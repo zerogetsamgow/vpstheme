@@ -2,7 +2,7 @@
 library(tidyverse)
 
 # Get data saved locally
-lga_table = read_csv("./data-raw/lga_dict.csv") |>
+lga_table = read_csv("./extdata/lga_dict.csv") |>
   mutate_all(as.character)
 
 # Create dictionary tibble

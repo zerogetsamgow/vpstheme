@@ -4,10 +4,12 @@
 \alias{make_tints}
 \title{Make tints based on Brand Victoria colours VIC Fonts}
 \usage{
-make_tints(bv_colour)
+make_tints(bv_colour, end_colour = c("white", "black"))
 }
 \arguments{
 \item{bv_colour}{a colour object to be used as the starting value in the tint range}
+
+\item{end_colour}{a string denoting the end value in the tint range, can take values of "white" (default) and "black".}
 }
 \description{
 Departmental palettes include tints of the primary colours
@@ -19,6 +21,8 @@ This function allows these tints to be created in a consistent fashion
 Other vpstheme: 
 \code{\link{install_rubik_fonts}()},
 \code{\link{install_vic_fonts}()},
+\code{\link{scale_colour_dh}()},
+\code{\link{scale_fill_dh}()},
 \code{\link{theme_vps_dffh}()},
 \code{\link{theme_vps_dh}()},
 \code{\link{theme_vps_foundation}()}

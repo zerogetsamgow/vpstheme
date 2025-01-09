@@ -24,4 +24,10 @@ Imports:
     stringdist,
     sysfonts,
     dplyr,
-    stringr
+    stringr,
+    colorspace,
+    scales
+Suggests: 
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr

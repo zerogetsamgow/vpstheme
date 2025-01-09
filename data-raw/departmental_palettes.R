@@ -4,20 +4,20 @@ dh_colours =
     "primary" =
       c(
         bv.pink,
-        bv.maroon,
         bv.orange,
-        bv.royal
+        bv.royal,
+        bv.red
       ),
     "secondary" =
       c(
         bv.blush,
-        bv.rose,
         bv.amber,
-        bv.cobalt),
+        bv.cobalt,
+        bv.rose),
     "tints_pink" =
       make_tints(bv.pink),
-    "tints_red" =
-      make_tints(bv.red),
+    "tints_dark" =
+      make_tints(bv.pink,"black"),
     "tints_orange" =
       make_tints(bv.orange),
     "tints_blue" =
