@@ -1,9 +1,13 @@
 #' Brand Victoria colours
 #'
 #' Brand Victoria colour palettes.
+#'
 #' The Brand Victoria colour palette consists of ten primary colours
 #' and ten secondary colour groups that incorporate some primary
 #' colours.
+#'
+#' `bv_colours` includes these as named palettes as well as a palette of
+#' all Brand Victoria colours defined in this package.
 #'
 #' @format ## `bv_colours`
 #' An object of class `palette` with `r length(bv_colours)` palettes.

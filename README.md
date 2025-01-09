@@ -3,10 +3,19 @@
 
 # vpstheme
 
-This package is a prototype. While it has useable palettes and themes
-for the Department of Health and Department of Families, Fairness and
-Housing as well as a range of helper functions, these palettes and
-themes require refinement.
+This package is in development.
+
+Version 1.0.0 includes useable palettes and themes for the Department of
+Health and the Department of Families, Fairness and Housing as well as a
+range of helper functions, these palettes and themes require refinement.
+
+Version 1.0.0 also includes `scale_*_dh()` functions that enable the use
+of the Department of Health’s palette for fills and colours in
+`ggplot()` objects.
+
+In its current form, the package is useable and provides example code to
+enable others to extend `theme_vps_foundation()` and adapt
+`scale_*_dh()` for other departments.
 
 <!-- badges: start -->
 <!-- badges: end -->
@@ -15,20 +24,6 @@ The main purpose of **vpstheme** is to enable R users in the Victorian
 Public Service to use the colours and fonts defined in the [Brand
 Victoria Guidelines](https://www.vic.gov.au/brand-victoria-guidelines)
 to create compliant visualisations in ggplot.
-
-**vpstheme** was created with the **palettes** package, which provides a
-comprehensive library for colour vectors and colour palettes using a new
-family of colour classes (`palettes_colour`, and `palettes_palette`)
-that always print as hex codes with colour previews.
-
-See the following vignettes to learn how to use palletes with other
-packages:
-
-- [Using palettes with
-  ggplot2](https://mccarthy-m-g.github.io/palettes/articles/ggplot2.html)
-
-- [Compatibility with other colour
-  packages](https://mccarthy-m-g.github.io/palettes/articles/compatibility.html)
 
 ## Installation
 
@@ -155,10 +150,10 @@ naming convention `theme_vps_*()`, where `*` denotes the department.
 As well as utilising departmental colours these themes are rendered
 using the `Rubik` font.
 
-Currently, the package includes prototype themes for:
+Currently, the package includes themes for:
 
 - [Department of Health](https://www.health.vic.gov.au/) -
-  `theme_vps_dh`.
+  `theme_vps_dh()`.
 
 ``` r
 library(ggplot2)
@@ -166,8 +161,8 @@ ggplot(
   data=iris,
   aes(x=Sepal.Length, y = Petal.Length,colour=Species)) +
   geom_point(size=3) +
-  scale_colour_manual(
-    values = dh_colours$primary,
+  scale_colour_dh(
+    palette = "primary",
     labels = stringr::str_to_title) +
   scale_x_continuous(name="Sepal length")+
   scale_y_continuous(name="Petal length")+
@@ -178,7 +173,7 @@ ggplot(
 <img src="man/figures/README-theme_vps_dh-1.png" width="700px" height="400px" />
 
 - [Department of Families, Fairness and
-  Housing](https://www.dffh.vic.gov.au/) - `theme_vps_dffh`.
+  Housing](https://www.dffh.vic.gov.au/) - `theme_vps_dffh()`.
 
 ``` r
 ggplot(data=iris,aes(x=Sepal.Length, y = Petal.Length,colour=Species)) +
@@ -192,8 +187,9 @@ ggplot(data=iris,aes(x=Sepal.Length, y = Petal.Length,colour=Species)) +
 
 <img src="man/figures/README-theme_vps_dffh-1.png" width="700px" height="400px" />
 
-The themes at present only different in the background colours that can
-be specified
+The themes at present largely only differ in the background colours that
+can be specified. `theme_vps_dh()` has additional functionality and
+specifications.
 
 - the base_colour parameter of `theme_vps_dh` can take values `pink`,
   `orange`, `red` and `blue` that correspond to the department’s primary
@@ -219,14 +215,29 @@ ggplot(data=iris,aes(x=Sepal.Length, y = Petal.Length,colour=Species)) +
 
 ### `theme_foundation`
 
-Each theme is built on `theme_vps_foundation`. This theme is designed to
-be a foundation from which to build new themes, and not meant to be used
-directly. {theme_vps_foundation() is a complete theme with only minimal
-number of elements defined. It is easier to create new themes by
-extending this one rather than `theme_gray` or `theme_bw` from
-***ggplot2***, because those themes define elements deep in the
-hierarchy. This theme takes {\[ggthemes\]{theme_foundation}()} and sets
-base text family and size to `Rubik` and `15`.
+Each theme is built on `theme_vps_foundation`.
+
+This theme is designed to be a foundation from which to build new
+themes, and not meant to be used directly. `theme_vps_foundation()` is a
+complete theme with only minimal number of elements defined. It is
+easier to create new themes by extending this one rather than
+`theme_gray()` or `theme_bw()` from ***ggplot2***, because those themes
+define elements deep in the hierarchy.
+
+This theme takes {\[ggthemes\]{theme_foundation}()} and sets base text
+family and size to `Rubik` and `15` as well as setting margins and other
+parameters to match departmental guidelines.
+
+## Fill and colour functions
+
+***vpstheme*** includes two functions that enable the use of
+`dh_colours` as fills and colours in `ggplot()` objects. These functions
+allow the user to easily use the palettes from `dh_colours` and both
+operate as wrappers around `scale_*_manual()`.
+
+`scale_colour_dh()` is used in the example above. The code for
+`scale_*_dh()` provide examples for other who wish to create similar
+functions for other departments.
 
 ## Functions
 
@@ -240,6 +251,23 @@ include:
   and joining data.
 
 - `make_tints` allows you to simply create Brand Victoria compliant tint
-  colour palettes ranging from a specified start colour to white in five
-  linear increments. White is then excluded from the palette to leave
-  you with four tints of the original colour.
+  colour palettes ranging from a specified start colour to white or
+  black in five linear increments. White/black are then excluded from
+  the palette to leave you with four lighter/darker tints of the
+  original colour.
+
+## Acknowledgement
+
+**vpstheme** was created with the **palettes** package, which provides a
+comprehensive library for colour vectors and colour palettes using a new
+family of colour classes (`palettes_colour`, and `palettes_palette`)
+that always print as hex codes with colour previews.
+
+See the following vignettes to learn how to use palletes with other
+packages:
+
+- [Using palettes with
+  ggplot2](https://mccarthy-m-g.github.io/palettes/articles/ggplot2.html)
+
+- [Compatibility with other colour
+  packages](https://mccarthy-m-g.github.io/palettes/articles/compatibility.html)

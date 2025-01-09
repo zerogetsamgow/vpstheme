@@ -124,6 +124,7 @@ bv_colours =
         "bv.teal" = bv.teal,
         "bv.forest" = bv.forest,
         "bv.mint" = bv.mint,
+        "bv.lime" = bv.lime,
         "bv.sunshine" = bv.sunshine,
         "bv.orange" = bv.orange,
         "bv.amber" = bv.amber,

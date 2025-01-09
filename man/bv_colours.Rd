@@ -17,9 +17,14 @@ bv_colours
 }
 \description{
 Brand Victoria colour palettes.
+}
+\details{
 The Brand Victoria colour palette consists of ten primary colours
 and ten secondary colour groups that incorporate some primary
 colours.
+
+`bv_colours` includes these as named palettes as well as a palette of
+all Brand Victoria colours defined in this package.
 }
 \examples{
 # Plot all colours
