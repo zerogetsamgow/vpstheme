@@ -13,6 +13,7 @@ editor_options:
 ```{r chart_setup, include=FALSE}
 library(dplyr)
 library(tibble)
+library(scales)
 library(stringr)
 library(ggplot2)
 ```
@@ -42,7 +43,7 @@ library(vpstheme)
 
 # Create tibble of data for example
 car_accidents = 
-  tibble(
+  tibble::tibble(
     year = c(2020,2021,2022,2023,2024),
     accidents = c(10,	5,	45,	10,	16)
   )
@@ -196,7 +197,7 @@ We provide examples of how to achieve this below.
 
 Ensure high contrast between values, by using `scale_*_dh()` as shown above.
 
-### 6.Data labels
+### 6. Data labels
 
 Axis labels alone may be enough if there are lots of categories (for example, bars), the differences are very clear, and individual values are not imperative.
 

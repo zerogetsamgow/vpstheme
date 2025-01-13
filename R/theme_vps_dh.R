@@ -9,6 +9,7 @@
 #' @export
 #' @param base_colour A text string that is used to set background, line and text colours for the theme
 #' @param base_size An integer that is used to set the base font size
+#' @param show_gridlines Add gridlines on the y-axis, defaults to FALSE. Use TRUE for gridlines.
 #' @importFrom ggplot2 theme
 #' @importFrom ggplot2 element_text
 #' @importFrom ggplot2 element_rect

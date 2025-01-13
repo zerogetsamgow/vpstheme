@@ -1,6 +1,7 @@
 ## ----chart_setup, include=FALSE-----------------------------------------------
 library(dplyr)
 library(tibble)
+library(scales)
 library(stringr)
 library(ggplot2)
 
@@ -9,7 +10,7 @@ library(vpstheme)
 
 # Create tibble of data for example
 car_accidents = 
-  tibble(
+  tibble::tibble(
     year = c(2020,2021,2022,2023,2024),
     accidents = c(10,	5,	45,	10,	16)
   )

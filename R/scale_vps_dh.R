@@ -6,6 +6,7 @@
 #'
 #' @family vpstheme
 #' @export
+#' @param ... Arguments passed on to scale_colour_manual
 #' @param palette A text string that is used to select the palette to use
 #' @importFrom ggplot2 scale_colour_manual
 #' @importFrom stringr str_to_lower
@@ -36,6 +37,7 @@ scale_colour_dh = function(..., palette = c("primary","secondary","pinks","orang
 #'
 #' @family vpstheme
 #' @export
+#' @param ... Arguments passed on to scale_fill_manual
 #' @param palette A text string that is used to select the palette to use
 #' @importFrom ggplot2 scale_fill_manual
 #' @importFrom stringr str_to_lower

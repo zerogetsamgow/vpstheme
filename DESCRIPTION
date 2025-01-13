@@ -12,8 +12,6 @@ LazyData: true
 URL: https://github.com/zerogetsamgow/vpstheme
 BugReports: https://github.com/zerogetsamgow/vpstheme/issues
 Depends: 
-    curl,
-    jsonlite,
     R (>= 3.5)
 RoxygenNote: 7.3.2
 Imports: 
@@ -26,6 +24,9 @@ Imports:
     dplyr,
     stringr,
     colorspace,
+    curl,
+    jsonlite,
+    tibble,
     scales
 Suggests: 
     knitr,
