@@ -45,10 +45,6 @@ colours, palettes and fonts.
 The Brand Victoria colour palette consists of ten primary colours, shown
 below.
 
-    #> Loading required package: curl
-    #> Using libcurl 8.10.1 with Schannel
-    #> Loading required package: jsonlite
-
 <img src="man/figures/README-bv_primary-1.png" width="700px" height="300px" />
 
 Incorporating the primary colour palette, the Brand Victoria secondary

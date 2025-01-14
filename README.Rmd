@@ -100,16 +100,34 @@ bv.table =
         position = 3L
       ),
       tibble(
+        name = "bv.cyan",
+        hex = "#009ca6",
+        group = 3L,
+        position = 1L
+      ),
+      tibble(
         name = "bv.teal",
         hex = "#00B2A9",
         group = 3L,
-        position = 1L
+        position = 2L
+      ),
+      tibble(
+        name = "bv.crytal",
+        hex = "#88dbdf",
+        group = 3L,
+        position = 3L
       ),
       tibble(
         name = "bv.forest",
         hex = "#00573f",
         group = 4L,
         position = 1L
+      ),
+     tibble(
+        name = "bv.jade",
+        hex = "#007b4b",
+        group = 4L,
+        position = 2L
       ),
       tibble(
         name = "bv.mint",
@@ -122,16 +140,41 @@ bv.table =
         hex = "#78BE20",
         group = 5L,
         position = 1L),
+      tibble(
+        name = "bv.chartreuse",
+        hex = "#cedc00",
+        group = 5L,
+        position = 2L),
+      tibble(
+        name = "bv.canary",
+        hex = "#f3e500",
+        group = 5L,
+        position = 3L),
      tibble(
         name = "bv.sunshine",
         hex = "#F6BE00",
         group = 6L,
         position = 1L),
      tibble(
+        name = "bv.butter",
+        hex = "#fdda24",
+        group = 6L,
+        position = 2L),
+     tibble(
+        name = "bv.yellow",
+        hex = "#fbe122",
+        group = 6L,
+        position = 3L),
+     tibble(
        name = "bv.orange",
        hex = "#E35205",
        group = 7L,
        position = 1L),
+     tibble(
+       name = "bv.fire",
+       hex = "#E57200",
+       group = 7L,
+       position = 2L),
      tibble(
         name = "bv.amber",
         hex = "#ff9e1b",
@@ -153,9 +196,19 @@ bv.table =
         position = 3,
         group = 8),
       tibble(
+        name = "bv.violet",
+        hex = "#500778",
+        position = 1,
+        group = 9),
+      tibble(
+        name = "bv.plum",
+        hex = "#642667",
+        position = 2,
+        group = 9),
+      tibble(
         name = "bv.purple",
         hex = "#87189D",
-        position = 1,
+        position = 3,
         group = 9),
       tibble(
         name = "bv.pink",

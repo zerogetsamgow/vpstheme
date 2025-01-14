@@ -116,7 +116,7 @@ You should avoid rotating axis labels. Rotate the graph (instead of the text) if
 ```{r long_titles, warnings = FALSE, fig.height = 4, fig.width = 6}
 # Create data tibble
 airport_flights = 
-  tibble(
+  tibble::tibble(
     city = c("London",  "Milan",    "Paris",    "Prague",   "Lisbon"),
     flights = c(45e6, 16e6,  10e6, 10e6, 5e6)
   )
@@ -162,7 +162,7 @@ By default, `theme_vps_dh()` places the legend below the graph as shown below, b
 ```{r col_example_full_colour, warnings = FALSE, fig.height = 4, fig.width = 6}
 # Create tibble of data for examples
 car_accidents = 
-  tibble(
+  tibble::tibble(
     month = rep(c("Jan","Feb","Mar","Apr","May"),4),
     freeway = c(rep("M1",5),rep("M2",5),rep("M3",5),rep("M4",5)),
     accidents = c(10, 5, 45, 10,	16, 
@@ -170,7 +170,7 @@ car_accidents =
                   30, 15, 25, 14, 18, 
                   25, 20, 15, 18, 10)
   ) |> 
-  mutate(month = factor(month, levels = month.abb),
+  dplyr::mutate(month = factor(month, levels = month.abb),
          freeny = factor(freeway))
 
 ## example of multi colour column plot
