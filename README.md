@@ -54,16 +54,11 @@ applications across all sectors of the brand.
 The palette has been categorised in 10 colour groups, from navy to pink,
 but the colours do not have to be used in these sets.
 
-Any colour can appear next to another, as long as its use follows
-guidelines and the colours are a harmonious colour combination.
+The included colours and their names, as per this package, are shown
+below.
 
-The first colour of each secondary group is shown below.
-
-<img src="man/figures/README-bv_secondary-1.png" width="700px" height="500px" />
-
-A selection of other colours from each group are included in this
-version of the package. Each colour is named. The included colours and
-their names are shown below.
+> Note, names used in this package have been selected by the package
+> author. Brand Victoria colours don’t have names as such.
 
 <img src="man/figures/README-bv_names-1.png" width="1000px" height="500px" />
 
@@ -83,9 +78,9 @@ bv.pink
 #> <palettes_colour[1]>
 #> • #C63663
 
-bv_colours$secondary[4]
+bv_colours$secondary2[4]
 #> <palettes_colour[1]>
-#> • #00573F
+#> • #007B4B
 ```
 
 ### VIC font

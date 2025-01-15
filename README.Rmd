@@ -56,15 +56,10 @@ Incorporating the primary colour palette, the Brand Victoria secondary colour pa
 
 The palette has been categorised in 10 colour groups, from navy to pink, but the colours do not have to be used in these sets.
 
-Any colour can appear next to another, as long as its use follows guidelines and the colours are a harmonious colour combination.
+The included colours and their names, as per this package, are shown below. 
 
-The first colour of each secondary group is shown below.
+> Note, names used in this package have been selected by the package author. Brand Victoria colours don't have names as such.
 
-```{r bv_secondary, echo=FALSE, out.height="500px", out.width="700px"}
-scales::show_col(bv_colours$secondary)
-```
-
-A selection of other colours from each group are included in this version of the package. Each colour is named. The included colours and their names are shown below.
 ```{r bv_table, include = FALSE}
 library(tibble)
 bv.table =
@@ -90,6 +85,12 @@ bv.table =
       tibble(
         name = "bv.cerulean",
         hex = "#0090DA",
+        group = 2L,
+        position = 1L
+      ),
+      tibble(
+        name = "bv.azure",
+        hex = "#00a9e0",
         group = 2L,
         position = 1L
       ),
@@ -259,7 +260,7 @@ bv_colours$primary[2]
 
 bv.pink
 
-bv_colours$secondary[4]
+bv_colours$secondary2[4]
 ```
 
 ### VIC font

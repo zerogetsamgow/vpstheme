@@ -112,7 +112,7 @@ bv.butter = palettes::pal_colour("#fdda24")
 usethis::use_data(bv.butter, overwrite = TRUE)
 
 bv.yellow = palettes::pal_colour("#fbe122")
-usethis::use_data(bv.butter, overwrite = TRUE)
+usethis::use_data(bv.yellow, overwrite = TRUE)
 
 
 #Group 10
@@ -142,18 +142,44 @@ bv_colours =
         "white" = bv.white
       ),
     #secondary colours
-    "secondary" =
+    "secondary1" =
       c(
         "navy" = bv.navy,
         "cerulean" = bv.cerulean,
-        "teal" = bv.teal,
+        "cyan" = bv.cyan,
         "forest" = bv.forest,
         "lime" = bv.lime,
         "sunshine" = bv.sunshine,
         "orange" = bv.orange,
         "maroon" = bv.maroon,
-        "purple" = bv.purple,
+        "violet" = bv.violet,
         "pink" = bv.pink
+      ),
+    "secondary2" =
+      c(
+        "royal" = bv.royal,
+        "azure" = bv.azure,
+        "teal" = bv.teal,
+        "jade" = bv.jade,
+        "chartreuse" = bv.chartreuse,
+        "butter" = bv.butter,
+        "fire" = bv.fire,
+        "red" = bv.red,
+        "plum" = bv.plum,
+        "blush" = bv.blush
+      ),
+    "secondary3" =
+      c(
+        "cobalt" = bv.cobalt,
+        "sky" = bv.sky,
+        "crystal" = bv.crystal,
+        "mint" = bv.mint,
+        "canary" = bv.canary,
+        "yellow" = bv.yellow,
+        "amber" = bv.amber,
+        "rose" = bv.rose,
+        "purple" = bv.purple,
+        "musk" = bv.musk
       ),
    "complete" =
       c(

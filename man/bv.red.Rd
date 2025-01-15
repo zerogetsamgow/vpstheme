@@ -9,7 +9,7 @@
 An object of class `colour` with hex value `#AF272F`.
 }
 \source{
-<https://github.com/zerogetsamgow/vpstheme>
+<https://www.vic.gov.au/brand-victoria-guidelines>
 }
 \usage{
 bv.red

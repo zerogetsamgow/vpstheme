@@ -9,7 +9,7 @@
 An object of class `colour` with hex value `#87189D`.
 }
 \source{
-<https://github.com/zerogetsamgow/vpstheme>
+<https://www.vic.gov.au/brand-victoria-guidelines>
 }
 \usage{
 bv.purple
@@ -18,7 +18,7 @@ bv.purple
 One of ten primary colours in the Brand Victoria colour palette.
 }
 \details{
-The first colour in the ninth secondary colour group
+The third colour in the ninth secondary colour group
 in the Brand Victoria colour palette.
 }
 \examples{

@@ -10,7 +10,7 @@ An object of class `palette` with `r length(bv_colours)` palettes.
 Use `names(bv_colours)` to return all palette names.
 }
 \source{
-<https://github.com/zerogetsamgow/vpstheme>
+<https://www.vic.gov.au/brand-victoria-guidelines>
 }
 \usage{
 bv_colours
@@ -23,8 +23,9 @@ The Brand Victoria colour palette consists of ten primary colours
 and ten secondary colour groups that incorporate some primary
 colours.
 
-`bv_colours` includes these as named palettes as well as a palette of
-all Brand Victoria colours defined in this package.
+`bv_colours` includes these as named palettes of ten colours `primary`,
+`seondary1`, `seondary2` and `seondary3 `as well as a palette, `combined`,
+ of all Brand Victoria colours.
 }
 \examples{
 # Plot all colours

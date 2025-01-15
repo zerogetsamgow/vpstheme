@@ -9,7 +9,7 @@
 An object of class `colour` with hex value `#e89cae`.
 }
 \source{
-<https://github.com/zerogetsamgow/vpstheme>
+<https://www.vic.gov.au/brand-victoria-guidelines>
 }
 \usage{
 bv.musk

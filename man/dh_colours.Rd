@@ -24,7 +24,6 @@ utilising:
 
 - `bv.pink`, `bv.maroon`, `bv.orange`, and `bv.royal` as `primary` colours.
 - `bv.blush`, `bv.rose`, `bv.amber`, and `bv.cobalt` as `secondary` colours.
-
 A range of tints based on the primary colours are also included in the palette
 e.g. `tints_pink`
 }

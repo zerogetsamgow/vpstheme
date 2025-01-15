@@ -207,9 +207,6 @@ Data labels should be used in preference to a legend. We can do that with `geom_
 -   Highlight a data label using different coloured text (or bold/darker shade) – so the emphasis remains clear in the absence of colour.
 
 
-
-
-
 ### 7. Gridlines
 
 May not be required. However, should you choose to include them

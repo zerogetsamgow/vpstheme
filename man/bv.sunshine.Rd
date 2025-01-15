@@ -9,13 +9,13 @@
 An object of class `colour` with hex value `#F6BE00`.
 }
 \source{
-<https://github.com/zerogetsamgow/vpstheme>
+<https://www.vic.gov.au/brand-victoria-guidelines>
 }
 \usage{
 bv.sunshine
 }
 \description{
-The first colour in the fifth secondary colour group
+The first colour in the sixth secondary colour group
 in the Brand Victoria colour palette.
 }
 \examples{

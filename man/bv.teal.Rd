@@ -9,7 +9,7 @@
 An object of class `colour` with hex value `#00b2a9`.
 }
 \source{
-<https://github.com/zerogetsamgow/vpstheme>
+<https://www.vic.gov.au/brand-victoria-guidelines>
 }
 \usage{
 bv.teal
@@ -18,7 +18,7 @@ bv.teal
 One of ten primary colours in the Brand Victoria colour palette.
 }
 \details{
-The first colour in the third secondary colour group
+The second colour in the third secondary colour group
 in the Brand Victoria colour palette.
 }
 \examples{

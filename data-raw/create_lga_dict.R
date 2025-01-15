@@ -2,7 +2,7 @@
 library(tidyverse)
 
 # Get data saved locally
-lga_table = read_csv("./extdata/lga_dict.csv") |>
+lga_table = read_csv("./inst/extdata/lga_dict.csv") |>
   mutate_all(as.character)
 
 # Create dictionary tibble
@@ -32,7 +32,15 @@ lga_dict <- c(lga_dict,
               "Merri-bek" = "Moreland",
               "Melton" = "Shire of Melton",
               "Colac Otway" = "Colac-Otway",
-              "Ballarat" = "The Rat")
+              "Ballarat" = "The Rat",
+              "Greater Geelong" = "Geel",
+              "Greater Geelong" = "G'long",
+              "Greater Geelong" = "G/long",
+              "Greater Geelong" = "Sleepy Hollow",
+              "Greater Geelong" = "CoGG",
+              "Greater Dandenong" = "Dandenong",
+              "Greater Dandenong" = "CGD"
+              )
 
 # Add no spaced versions
 nospaces <- str_remove_all(lga_table$lga_name, " ")

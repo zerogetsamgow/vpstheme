@@ -9,7 +9,7 @@
 An object of class `colour` with hex value `#8A2A2B`.
 }
 \source{
-<https://github.com/zerogetsamgow/vpstheme>
+<https://www.vic.gov.au/brand-victoria-guidelines>
 }
 \usage{
 bv.maroon
