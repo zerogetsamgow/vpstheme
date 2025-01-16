@@ -360,12 +360,18 @@ This theme is designed to be a foundation from which to build new themes, and no
 
 This theme takes {[ggthemes]{theme_foundation}()} and sets base text family and size to `Rubik` and `15` as well as setting margins and other parameters to match departmental guidelines.
 
-## Fill and colour functions
+## Scales
+
+### Fill and colour
 
 ***vpstheme*** includes two functions that enable the use of `dh_colours` as fills and colours in `ggplot()` objects. These functions allow the user to easily use the palettes from `dh_colours` and both operate as wrappers around `scale_*_manual()`. 
 
-`scale_colour_dh()` is used in the example above. The code for `scale_*_dh()` provide examples for other who wish to create similar functions for other departments.
+`scale_colour_dh()` is used in the example above. The code for `scale_*_dh()` provides examples for other who wish to create similar functions for other departments.
 
+### Continous axes scales
+
+
+***vpstheme*** includes two functions - `scale_y_continuvps()` and `scale_x_continuvps()` - that enable you to easily use default expansion values for continuous scales in `ggplot()` objects that allow. These functions allow the user to easily use the palettes from `dh_colours` and both operate as wrappers around `scale_*_manual()`. 
 
 ## Functions
 

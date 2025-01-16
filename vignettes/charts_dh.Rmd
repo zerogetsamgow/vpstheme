@@ -28,7 +28,7 @@ This vignettes is a compliment to and is informed by the document `'Selecting an
 
 This vignette assumes the reader is familiar with making graphs in r using the ***ggplot2*** package.
 
-## Using theme_vps_dhs to format non-data components
+## Using theme_vps_dh to format non-data components
 
 A theme comprises information on the colours, fonts and line styles you want the base of your plot to use.
 
@@ -36,7 +36,7 @@ A theme comprises information on the colours, fonts and line styles you want the
 
 Using these allows you to implement the correct format for non-data components of your graphs, including titles, axes, etc.
 
-The following example illustrates how `theme_vps_dhs()` implements the guidelines with discussion below.
+The following example illustrates how `theme_vps_dh()` implements the guidelines with discussion below.
 
 ```{r col_example, warnings = FALSE, fig.height = 4, fig.width = 6}
 library(vpstheme)
@@ -126,16 +126,18 @@ ggplot(
   data = airport_flights, 
   aes(
     x = reorder(city, flights), 
-    y = flights)) +
+    y = flights,
+    fill = city)) +
   geom_col(fill = bv.pink) +
   # Convert from columb to horizontal bar using coord_flip
   coord_flip()+
-  # geom_text(aes(label = round(flights/1e6)), size = 5, nudge_y = 1)+
+#  geom_text(aes(label = round(flights/1e6)), size = 5, hjust = 0, nudge_y  = .1e6)+
+#  scale_fill_manual(guide = "none", values = c("Prague"=bv.pink), na.value = bv.smoke)+
   scale_x_discrete(name = NULL) +
-  scale_y_continuous(
+  scale_y_continuvps(
     name = "Flights per year, millions", 
     labels = scales::label_number(scale = 1/1e6),  
-    limits = c(0,50e6), expand = c(0,0,.1,.1))+
+    limits = c(0,50e6))+
   labs(title="Flights at major international airports")+
   theme_vps_dh()
 ```
@@ -153,13 +155,15 @@ The decision to start a scale at 0 on other graphs will depend on the situation.
 
 ### 5. Legends
 
-Legends are not required if only one series of values in the graph, as per the example above, and may not be required if data components can be labelled – this is preferred – refer ‘data labels’ below.
-
 We use a slightly more complicated set of example data to illustrate legends.
 
-By default, `theme_vps_dh()` places the legend below the graph as shown below, but this can be adjusted using the `theme()` function.
+Departmental guidelines recommend legends be placed as close as possible to content: below the title, close to the graph data (for example, at the end of a line) but not cluttering the plot area.
 
-```{r col_example_full_colour, warnings = FALSE, fig.height = 4, fig.width = 6}
+Legend and plot margins in `theme_vps_dh()` have been set to achieve the recommended spacing, but can also be adjusted using `theme()`. YOu can also use `scale_*_continuvps()` a wrapper around `scale_*_continuous()` that has default expansion parameters to match departmental guidlines.
+
+By default, `theme_vps_dh()` places the legend below the graph as shown below, but this can be adjusted using the `theme()` function when you are using `position_stack()`
+
+```{r col_example_full_colour, warnings = FALSE, fig.height = 4, fig.width = 7}
 # Create tibble of data for examples
 car_accidents = 
   tibble::tibble(
@@ -176,30 +180,71 @@ car_accidents =
 ## example of multi colour column plot
 ggplot(
   data = car_accidents,
-  aes(x = month, y = accidents, fill = freeway)) +
+  aes(x = month, y = accidents, fill = freeway, label = freeway)) +
   # by default multi category columns will be stacked, we can adjust using `position`
   geom_col(position = position_dodge2()) +
   scale_x_discrete(name = NULL)+
-  scale_y_continuous(name = "Number of accidents", expand = c(0,0))+
-  scale_fill_dh(palette = "pinks", name = NULL)+
+  scale_y_continuvps(name = "Number of accidents", limits = c(0,50))+
+  scale_fill_dh(palette = "pinks", name = NULL) +
   labs(title="Annual car accidents on major motor ways",
        subtitle = "This example shows how to add color using `scale_fill_dh`.")+
   theme_vps_dh()
 ```
+Ensure high contrast between values, by using `scale_*_dh()` as shown above or highlighting one value as shown below. List legend items in the same sequence as the bars they refer to, or matching the order of the end points on a line graph. We provide examples of how to achieve this below.
+
+Legends are not required if only one series of values in the graph, as per the Airports example above, and may not be required if data components can be labelled. This is preferred. The examples below show how to achieve this using either `geom_text()` or `facet_grid()`.
 
 
-Departmental guidelines recommend legends be placed as close as possible to content: below the title, close to the graph data (for example, at the end of a line) but not cluttering the plot area.
-
-Legend and plot margins in `theme_vps_dh()` have been set to achieve the recommended spacing, but can alos be adjusted using `theme()`.
-
-List legend items in the same sequence as the bars they refer to, or matching the order of the end points on a line graph.
-We provide examples of how to achieve this below.
-
-Ensure high contrast between values, by using `scale_*_dh()` as shown above.
-
+```{r col_example_text_no_label, warnings = FALSE, fig.height = 4, fig.width = 7}
+ggplot2::ggplot(
+  data = car_accidents,
+  aes(x = month, y = accidents, fill = freeway, 
+      # Add label and colour aesthetics, the latter so we can specify different colours for
+      # different label/backgroud combinations
+      label = freeway, colour = freeway)) +
+  # Add colour = 'transparent` so geom_col doesn't pick up the values of scale_colour_manual.
+  geom_col(position = position_dodge2(), colour = "transparent") +
+  # Add labels, but define arbitrary low value of y to place at base of columns.
+  geom_text(
+    aes(y = 1), 
+    # We need to set position to match geom_col()
+    position = position_dodge2(width = .9), 
+    vjust = 0
+    ) +
+  scale_x_discrete(name = NULL)+
+  scale_y_continuous(name = "Number of accidents", expand = c(0,0), limits=c(0,53))+
+  # Use scale fill and specify the value you want to highlight and the value to use for others
+  # na.value
+  scale_fill_manual(guide = "none", values = c("M3" = bv.pink), na.value = bv.smoke)+
+  # Use scale colour and specify the value you want to highlight and the value to use for others
+  # na.value
+  scale_colour_manual(guide = "none", values = c("M3" = bv.smoke), na.value = bv.charcoal)+
+  labs(title="Annual car accidents on major motor ways",
+       subtitle = "Highlight using `geom_text()` and `scale_fill_manual`.")+
+  theme_vps_dh()
+```
+```{r col_example_facet_no_label, warnings = FALSE, fig.height = 4, fig.width = 7}
+ggplot2::ggplot(
+  data = car_accidents,
+  # Change our x aesthetic to freeway
+  aes(x = freeway, y = accidents, fill = freeway)) +
+  geom_col(position = position_dodge2()) +
+  # Add facet_grid to reintroduce month, and use switch to put facet strips at bottom
+  facet_grid(cols = vars(month), switch = "x") +
+  scale_x_discrete(name = NULL)+
+  scale_y_continuvps(name = "Number of accidents", limits = c(0,50))+
+  # Use scale fill and specify the value you want to highlight and the value to use for others
+  # na.value
+  scale_fill_manual(guide = "none", values = c("M3" = bv.pink), na.value = bv.smoke)+
+  labs(title="Annual car accidents on major motor ways",
+       subtitle = "Highlight using `facet_grid()` and `scale_fill_manual`.")+
+  theme_vps_dh() +
+  # Adjust text size to fit axis labels
+  theme(axis.text.x = element_text(size = rel(.8)))
+```
 ### 6. Data labels
 
-Axis labels alone may be enough if there are lots of categories (for example, bars), the differences are very clear, and individual values are not imperative.
+Data labels may not be required, such as when axis labels alone are enough if there are lots of categories (for example, bars), the differences are very clear, and individual values are not imperative.
 
 Data labels should be used in preference to a legend. We can do that with `geom_text()` as shown in the first example above. We will present more interesting cases later, for example, at the end of a line.
 
@@ -215,3 +260,4 @@ However• Include in bar and line graphs to help users read and compare values 
 • Should be muted (light) relative to the data so they don’t overwhelm, or detract from, the message/story.
 
 
+The order of the bars depends on the categories they depict. • When there is a natural sequence we typically order the column left to right (for example, a series of dates may be ordered earliest to most recent). • If the dataset is not contiuous (eg. categorical or nominal comparisons), we advise to use horizontal bar charts instead. • Consider removing axis titles if they are self-explanatory, or fully explained in the heading.

@@ -89,6 +89,7 @@ theme_vps_foundation <- function(base_size = 15, base_family = "Rubik") {
       plot.margin = ggplot2::margin(2, 2, 2, 2, "mm"),
       # Define foundation title parameters
       plot.title.position = "plot",
+      strip.placement = "outside",
 
     )
 

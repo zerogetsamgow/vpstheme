@@ -25,11 +25,11 @@ Imports:
     stringr,
     colorspace,   
     jsonlite,
-    curl,
-    tibble,
-    scales
+    curl
 Suggests: 
     knitr,
+    tibble,
+    scales,
     rmarkdown,
     testthat (>= 3.0.0)
 VignetteBuilder: knitr

@@ -75,6 +75,9 @@ theme_vps_dh <-
       axis.text =
         ggplot2::element_text(
           colour = .axis_text_colour),
+      strip.text =
+        ggplot2::element_text(
+          colour = .axis_text_colour),
       plot.background =
         ggplot2::element_rect(
           fill = .base_colour,
