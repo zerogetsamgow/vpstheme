@@ -31,6 +31,7 @@ Other vpstheme:
 \code{\link{make_tints}()},
 \code{\link{scale_colour_dffh}()},
 \code{\link{scale_colour_dh}()},
+\code{\link{scale_colour_dh_line}()},
 \code{\link{scale_fill_dffh}()},
 \code{\link{scale_fill_dh}()},
 \code{\link{theme_vps_dffh}()},

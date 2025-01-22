@@ -6,13 +6,16 @@
 \usage{
 scale_colour_dh(
   ...,
-  palette = c("primary", "secondary", "pinks", "oranges", "blues")
+  palette = c("primary", "secondary", "pinks", "oranges", "blues"),
+  reverse = FALSE
 )
 }
 \arguments{
 \item{...}{Arguments passed on to scale_colour_manual}
 
 \item{palette}{A text string that is used to select the palette to use}
+
+\item{reverse}{A logical to reverse order of palette}
 }
 \description{
 This function is a wrapper around \code{\link[ggplot2]{scale_colour_manual}()} that supplies a
@@ -24,6 +27,7 @@ Other vpstheme:
 \code{\link{install_vic_fonts}()},
 \code{\link{make_tints}()},
 \code{\link{scale_colour_dffh}()},
+\code{\link{scale_colour_dh_line}()},
 \code{\link{scale_fill_dffh}()},
 \code{\link{scale_fill_dh}()},
 \code{\link{theme_vps_dffh}()},

@@ -2,17 +2,20 @@
 % Please edit documentation in R/scale_vps_dh.R
 \name{scale_fill_dh}
 \alias{scale_fill_dh}
-\title{Department of Health color fillefunction}
+\title{Department of Health fill function}
 \usage{
 scale_fill_dh(
   ...,
-  palette = c("primary", "secondary", "pinks", "oranges", "blues")
+  palette = c("primary", "secondary", "pinks", "oranges", "blues"),
+  reverse = FALSE
 )
 }
 \arguments{
 \item{...}{Arguments passed on to scale_fill_manual}
 
 \item{palette}{A text string that is used to select the palette to use}
+
+\item{reverse}{A logical to reverse order of palette}
 }
 \description{
 This function is a wrapper around \code{\link[ggplot2]{scale_fill_manual}()} that supplies a
@@ -25,6 +28,7 @@ Other vpstheme:
 \code{\link{make_tints}()},
 \code{\link{scale_colour_dffh}()},
 \code{\link{scale_colour_dh}()},
+\code{\link{scale_colour_dh_line}()},
 \code{\link{scale_fill_dffh}()},
 \code{\link{theme_vps_dffh}()},
 \code{\link{theme_vps_dh}()},

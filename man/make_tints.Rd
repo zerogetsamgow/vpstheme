@@ -4,7 +4,7 @@
 \alias{make_tints}
 \title{Make tints based on Brand Victoria colours VIC Fonts}
 \usage{
-make_tints(bv_colour, end_colour = c("white", "black"))
+make_tints(bv_colour, end_colour = c("white", "black"), ...)
 }
 \arguments{
 \item{bv_colour}{a colour object to be used as the starting value in the tint range}
@@ -23,6 +23,7 @@ Other vpstheme:
 \code{\link{install_vic_fonts}()},
 \code{\link{scale_colour_dffh}()},
 \code{\link{scale_colour_dh}()},
+\code{\link{scale_colour_dh_line}()},
 \code{\link{scale_fill_dffh}()},
 \code{\link{scale_fill_dh}()},
 \code{\link{theme_vps_dffh}()},
