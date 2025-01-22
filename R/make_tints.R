@@ -7,8 +7,9 @@
 #'
 #' @family vpstheme
 #' @export
-#' @param bv_colour a colour object to be used as the starting value in the tint range
 #'
+#' @param ... Arguments passed on to pal_ramp
+#' @param bv_colour a colour object to be used as the starting value in the tint range
 #' @param end_colour a string denoting the end value in the tint range, can take values of "white" (default) and "black".
 #' @importFrom palettes pal_ramp
 

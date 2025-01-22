@@ -10,6 +10,8 @@ make_tints(bv_colour, end_colour = c("white", "black"), ...)
 \item{bv_colour}{a colour object to be used as the starting value in the tint range}
 
 \item{end_colour}{a string denoting the end value in the tint range, can take values of "white" (default) and "black".}
+
+\item{...}{Arguments passed on to pal_ramp}
 }
 \description{
 Departmental palettes include tints of the primary colours

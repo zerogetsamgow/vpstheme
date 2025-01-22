@@ -142,7 +142,7 @@ last_plot() +
   # Add scale_fill_dh and specify the pinks palette
   scale_fill_dh(palette = "pinks", name = NULL) 
 
-## -----------------------------------------------------------------------------
+## ----stack_scale_fill_dh, warnings = FALSE, fig.height = 5, fig.width = 7-----
 last_plot() +
  # Change to a stacked bar chart
   geom_col(aes(fill = forcats::fct_rev(freeway)), position = position_stack()) +
@@ -189,49 +189,30 @@ ggplot(
   scale_colour_dh_line(name = NULL) +
   theme_vps_dh() 
 
-## ----line_plus, fig.width = 7, fig.height = 5---------------------------------
+## ----line_style, fig.width = 7, fig.height = 5--------------------------------
 # example plot
 last_plot() +
   guides(colour = "none") +
+  # Add labels using geom_text
   geom_text(
-    guide = "none",
-    size = 5,
     data =  line_data |> 
+      # Filter data to only add labels for max(year)
       filter(str_detect(Region, "Region"), 
              year == max(year)),
     aes(label = Region), 
+    guide = "none",
+    size = 5,
+    # Shift to right of x value.
     hjust = -.1) +
+  # Use scale_x_continuvps to easily add space for label.
   scale_x_continuvps(expand_left = .05, expand_right = .2)
   
 
 ## ----multi_line, fig.width = 7, fig.height = 5--------------------------------
 # example plot
-ggplot(
-  data = line_data |> 
-      filter(str_detect(Region, "Region")), 
-  aes(
-    x = year, 
-    y = trips,
-    fill = Region,
-    colour = Region,
-    )
-  ) +
-  geom_line() +
+last_plot() +
   geom_point(show.legend = FALSE) +
-   geom_text(
-    size = 5,
-    data =  line_data |> 
-      filter(str_detect(Region, "Region"), 
-             year == max(year)),
-    aes(label = Region), 
-    hjust = -.1) +
-  scale_x_continuvps(
-    name = NULL, 
-    breaks = 2020:2024,
-    expand_left = .05, expand_right = .2) +
-  scale_y_continuvps(name = "Number of Trips", limits = c(0,440))+
-  scale_colour_dh_line(guide = "none", colour = "orange", gradient = TRUE) + 
-  theme_vps_dh()
+  scale_colour_dh_line(guide = "none", colour = "orange", gradient = TRUE) 
 
 ## ----add_gridlines, fig.width = 7, fig.height = 5-----------------------------
 accident_plot +

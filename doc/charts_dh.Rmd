@@ -302,7 +302,7 @@ By default, `theme_vps_dh()` places the legend below the graph as shown above, b
 
 
 
-``` {r}
+``` {r stack_scale_fill_dh, warnings = FALSE, fig.height = 5, fig.width = 7}
 last_plot() +
  # Change to a stacked bar chart
   geom_col(aes(fill = forcats::fct_rev(freeway)), position = position_stack()) +
@@ -315,7 +315,9 @@ last_plot() +
 
 ### Line charts
 
-Departmental guidelines for using colour and legends in line charts differs to column/bar charts. For line charts, it is recommended that you highlight a single line of interest by colouring it and using shades of black for other lines. The function `scale_colour_dh_line` has been created for this purpose. This scale creates a palette comprising a single colour and four shades of black. You can specify the colour (choosing from pink, blue, red and orange) and three different options for the shades of black.
+Departmental guidelines for using colour and legends in line charts differ to column/bar charts. 
+
+For line charts, it is recommended that you highlight a single line of interest by colouring it and using shades of black for other lines. The function `scale_colour_dh_line` has been created for this purpose. This scale creates a palette comprising a single colour and four shades of black. You can specify the colour (choosing from pink, blue, red and orange) and three different options for the shades of black (dark, light or gradient).
 
 We create a new example to illustrate how to use `scale_colour_dh_line` as shown below. This highlights "Region A" while other regions are shown in grey.
 
@@ -358,62 +360,37 @@ ggplot(
   theme_vps_dh() 
 ```
 
-
-Key points: • Use markers to show your actual data points to distinguish the series from a continuous distribution.
-However, if there are many categories or the values are approximate, use a line chart without markers.
-• Use lines between markers to show trends.
-Use dashed lines if you want the focus to be on the markers.
-• *Do not* use a line chart if you are displaying categories on the X axis.
-Use a bar chart instead.
-• *Do not* use more than 2 colours in one chart.
-If the data series is a ‘nice to have’, push them to the background by using a dark grey colour.
+As noted previsously, department guidlines recommend legends be close to the graph data (for example, at the end of a line). We can achieve this style using `geom_text` as shown below. You will also need to adjust the spacing of the x axis. This can be done using `scale_x_continuvps`
 
 
-
-```{r  line_plus, fig.width = 7, fig.height = 5}
+```{r  line_style, fig.width = 7, fig.height = 5}
 # example plot
 last_plot() +
   guides(colour = "none") +
+  # Add labels using geom_text
   geom_text(
-    guide = "none",
-    size = 5,
     data =  line_data |> 
+      # Filter data to only add labels for max(year)
       filter(str_detect(Region, "Region"), 
              year == max(year)),
     aes(label = Region), 
+    guide = "none",
+    size = 5,
+    # Shift to right of x value.
     hjust = -.1) +
+  # Use scale_x_continuvps to easily add space for label.
   scale_x_continuvps(expand_left = .05, expand_right = .2)
   
 ```
 
+
+Other style guide recommendations include the use markers to show your actual data points to distinguish the series from a continuous distribution. We illustrate this and another option for `scale_colour_dh_line` below.
+
 ``` {r multi_line, fig.width = 7, fig.height = 5}
 # example plot
-ggplot(
-  data = line_data |> 
-      filter(str_detect(Region, "Region")), 
-  aes(
-    x = year, 
-    y = trips,
-    fill = Region,
-    colour = Region,
-    )
-  ) +
-  geom_line() +
+last_plot() +
   geom_point(show.legend = FALSE) +
-   geom_text(
-    size = 5,
-    data =  line_data |> 
-      filter(str_detect(Region, "Region"), 
-             year == max(year)),
-    aes(label = Region), 
-    hjust = -.1) +
-  scale_x_continuvps(
-    name = NULL, 
-    breaks = 2020:2024,
-    expand_left = .05, expand_right = .2) +
-  scale_y_continuvps(name = "Number of Trips", limits = c(0,440))+
-  scale_colour_dh_line(guide = "none", colour = "orange", gradient = TRUE) + 
-  theme_vps_dh()
+  scale_colour_dh_line(guide = "none", colour = "orange", gradient = TRUE) 
 ```
 
 
@@ -441,59 +418,9 @@ accident_plot +
   theme_vps_dh(show_gridlines = TRUE)
 ```
 
-The order of the bars depends on the categories they depict.
-• When there is a natural sequence we typically order the column left to right (for example, a series of dates may be ordered earliest to most recent).
-• If the dataset is not contiuous (eg. categorical or nominal comparisons), we advise to use horizontal bar charts instead.
-• Consider removing axis titles if they are self-explanatory, or fully explained in the heading.
+## Other examples (in development).
 
-{r}
-comparison_data =
-  tibble(
-    year = rep(c(2016:2024),2),
-    type = c(rep("Expenditure",9),rep("Income",9)),
-    value =
-      c(42206844,   47883821,   60827924,   
-        115072080, 138989959,   164836433,  
-        191977494,  203121809,  231789110,
-        23008170,   27059913,   32949213,   
-        36212567,   40825086,   50466673,   
-        60960692,   71814854,   100712099)
-    )
-
-# example plot
-ggplot(
-  data = comparison_data , 
-  aes(
-    x = year, 
-    y = value/1e6,
-    colour = type,
-    )
-  )+
-  geom_line() +
-  ggrepel::geom_text_repel(
-    data =  comparison_data |> filter(year == max(year)),
-    aes(label = type, colour = type), direction = "y", size = 5,
-    force = 40, min.segment.length = 20) +
-  scale_x_continuous(name = NULL, breaks = 2016:2024, limits = c(2016, 2024.4))+
-  geom_segment(data = tibble(x = 2021.5, xend = 2021.5, y = 60, yend = 170, type = NA), 
-               aes(x = x, y = y, xend = xend, yend=yend), colour = bv.charcoal, fill = NA)+
-  annotate(geom = "text", size = 5, hjust = 0, label = "Difference = net cost", x = 2021.7, y = 115)+
-  scale_y_continuous(
-    name = "$ million", 
-    expand = c(0,0), 
-    limits = c(0,250), 
-    breaks = seq(0,500, by = 50))+
-  scale_fill_manual(name = NULL, guide = "none", values = (vago_colours$chart))+
-  scale_colour_manual(name = NULL,guide = "none",  values = (vago_colours$chart))+
-  labs(title="Two colours",
-       subtitle = "Highlighting difference")+
-  theme_vago_white()
-
-
-
-Ensure high contrast between values, by using `scale_*_dh()` as shown above or highlighting one value as shown below.
-
-The examples below show how to achieve this using either `geom_text()` or `facet_grid()`.
+The examples below show how to highlight one value with labels when using position_dodge  using either `geom_text()` or `facet_grid()`.
 
 ```{r col_example_text_no_label, warnings = FALSE, fig.height = 5, fig.width = 7}
 ggplot2::ggplot(
