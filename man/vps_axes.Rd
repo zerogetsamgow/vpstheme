@@ -6,27 +6,27 @@
 \title{Ensure your y- and x-axis are department style guide-consistent and don't hang
 off the edge of the chart.}
 \usage{
-scale_y_continuvps(expand_bottom = 0, expand_top = 0.05, ...)
+scale_y_continuvps(..., expand_bottom = 0, expand_top = 0.02)
 
-scale_x_continuvps(expand_left = 0, expand_right = 0.05, ...)
+scale_x_continuvps(..., expand_left = 0, expand_right = 0.02)
 }
 \arguments{
+\item{...}{arguments passed to scale_y_continuous or scale_x_continuous}
+
 \item{expand_bottom}{default is 0. This will ensure that your x-axis is at
 the bottom value of your plotted data. Increase to add some buffer between
 the lowest point in your data and the x-axis. Note that the value is
 interpreted as a fraction of the total plotting space - a value of 1 will
 add white space equal to the whole area of your data.}
 
-\item{expand_top}{default is 0.05. This will ensure that a small amount of
+\item{expand_top}{default is 0.02. This will ensure that a small amount of
 white space is added to the top of your chart. Increase to add more white
 space.}
-
-\item{...}{arguments passed to scale_y_continuous or scale_x_continuous}
 
 \item{expand_left}{default is 0. This will ensure your y-axis is at the
 lowest value of your plotted value.}
 
-\item{expand_right}{default is 0.05. This will ensure that a small amount of
+\item{expand_right}{default is 0.02. This will ensure that a small amount of
 white space is added to the right of your chart.}
 }
 \description{
@@ -59,7 +59,7 @@ p
 
 p <- ggplot(mtcars, aes(x = wt, y = mpg)) +
      geom_point() +
-     scale_y_continuvps(expand_bottom = 0.05) +
+     scale_y_continuvps(expand_bottom = 0.02) +
      theme_vps_dh()
 
 p
