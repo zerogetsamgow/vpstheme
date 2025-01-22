@@ -185,11 +185,11 @@ ggplot(
   # Add line chart
   geom_line() +
   scale_x_continuous(name = NULL)+
-  scale_y_continuvps(name = "Number of Trips", limits = c(0,400))+
+  scale_y_continuvps(name = "Number of Trips", limits = c(0,500))+
   scale_colour_dh_line(name = NULL) +
   theme_vps_dh() 
 
-## ----line_style, fig.width = 7, fig.height = 5--------------------------------
+## ----line_style, warnings = FALSE, fig.width = 7, fig.height = 5--------------
 # example plot
 last_plot() +
   guides(colour = "none") +
@@ -200,12 +200,11 @@ last_plot() +
       filter(str_detect(Region, "Region"), 
              year == max(year)),
     aes(label = Region), 
-    guide = "none",
     size = 5,
     # Shift to right of x value.
     hjust = -.1) +
   # Use scale_x_continuvps to easily add space for label.
-  scale_x_continuvps(expand_left = .05, expand_right = .2)
+  scale_x_continuvps(name = NULL, expand_left = .05, expand_right = .2)
   
 
 ## ----multi_line, fig.width = 7, fig.height = 5--------------------------------
