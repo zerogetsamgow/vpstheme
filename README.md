@@ -5,11 +5,11 @@
 
 This package is in development.
 
-Version 1.0.0 includes useable palettes and themes for the Department of
+Version 2.0.0 includes useable palettes and themes for the Department of
 Health and the Department of Families, Fairness and Housing as well as a
 range of helper functions, these palettes and themes require refinement.
 
-Version 1.0.0 also includes `scale_*_dh()` functions that enable the use
+Version 2.0.0 also includes `scale_*_dh()` functions that enable the use
 of the Department of Health’s palette for fills and colours in
 `ggplot()` objects.
 
@@ -18,6 +18,14 @@ enable others to extend `theme_vps_foundation()` and adapt
 `scale_*_dh()` for other departments.
 
 <!-- badges: start -->
+
+![GitHub R package
+version](https://img.shields.io/github/r-package/v/zerogetsamgow/vpstheme)
+![GitHub last
+commit](https://img.shields.io/github/last-commit/zerogetsamgow/vpstheme)
+![GitHub Actions Workflow
+Status](https://img.shields.io/github/actions/workflow/status/zerogetsamgow/vpstheme/r.yml)
+
 <!-- badges: end -->
 
 The main purpose of **vpstheme** is to enable R users in the Victorian
@@ -45,7 +53,7 @@ colours, palettes and fonts.
 The Brand Victoria colour palette consists of ten primary colours, shown
 below.
 
-<img src="man/figures/README-bv_primary-1.png" width="700px" height="300px" />
+<img src="man/figures/README-bv_primary-1.png" width="100%" />
 
 Incorporating the primary colour palette, the Brand Victoria secondary
 colour palette is designed to accommodate the great range of
@@ -60,7 +68,7 @@ below.
 > Note, names used in this package have been selected by the package
 > author. Brand Victoria colours don’t have names as such.
 
-<img src="man/figures/README-bv_names-1.png" width="1000px" height="500px" />
+<img src="man/figures/README-bv_names-1.png" width="100%" />
 
 Each colour can be referenced directly using the {bv.\*} format or via
 the palette object, eg `bv_colours$primary[1]` as shown below.
@@ -229,8 +237,11 @@ allow the user to easily use the palettes from `dh_colours` and both
 operate as wrappers around `scale_*_manual()`.
 
 `scale_colour_dh()` is used in the example above. The code for
-`scale_*_dh()` provides examples for other who wish to create similar
+`scale_*_dh()` provides examples for others who wish to create similar
 functions for other departments.
+
+`scale_colour_dh_line()` provides departmental style guide compliant
+colours for line charts. Refer to the vignettes for more information
 
 ### Continous axes scales
 

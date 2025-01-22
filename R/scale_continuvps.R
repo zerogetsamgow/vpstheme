@@ -6,12 +6,12 @@
 #'   the lowest point in your data and the x-axis. Note that the value is
 #'   interpreted as a fraction of the total plotting space - a value of 1 will
 #'   add white space equal to the whole area of your data.
-#' @param expand_top default is 0.05. This will ensure that a small amount of
+#' @param expand_top default is 0.02. This will ensure that a small amount of
 #'   white space is added to the top of your chart. Increase to add more white
 #'   space.
 #' @param expand_left default is 0. This will ensure your y-axis is at the
 #'   lowest value of your plotted value.
-#' @param expand_right default is 0.05. This will ensure that a small amount of
+#' @param expand_right default is 0.02. This will ensure that a small amount of
 #'   white space is added to the right of your chart.
 #' @param ... arguments passed to scale_y_continuous or scale_x_continuous
 #' @examples
@@ -40,7 +40,7 @@
 #'
 #' p <- ggplot(mtcars, aes(x = wt, y = mpg)) +
 #'      geom_point() +
-#'      scale_y_continuvps(expand_bottom = 0.05) +
+#'      scale_y_continuvps(expand_bottom = 0.02) +
 #'      theme_vps_dh()
 #'
 #' p
@@ -68,14 +68,13 @@ NULL
 #' @importFrom ggplot2 scale_y_continuous expand_scale
 #' @export
 
-scale_y_continuvps <- function(expand_bottom = 0,
-                                    expand_top = 0.05,
-                                    ...) {
+scale_y_continuvps <- function(..., expand_bottom = 0, expand_top = 0.02) {
   # Pass values to scale_y_continous
   scale_y_continuous(
     expand =
       ggplot2::expansion(
-        mult = c(expand_bottom,expand_top)
+        mult = c(expand_bottom,
+                 expand_top)
         ),
     ...)
 }
@@ -84,16 +83,15 @@ scale_y_continuvps <- function(expand_bottom = 0,
 #' @importFrom ggplot2 scale_x_continuous expand_scale
 #' @export
 
-scale_x_continuvps <- function(expand_left = 0,
-                                    expand_right = 0.05,
-                                    ...) {
+scale_x_continuvps <- function(..., expand_left = 0, expand_right = 0.02) {
   # Pass values to scale_x_continuous
   scale_x_continuous(
+    ...,
     expand =
       ggplot2::expansion(
         mult = c(expand_left,
                  expand_right)
-        ),
-    ...)
+        )
+    )
 
 }

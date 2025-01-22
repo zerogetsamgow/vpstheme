@@ -212,7 +212,11 @@ bv_colours =
         "bv.purple" = bv.purple,
         "bv.pink" = bv.pink, #10
         "bv.blush" = bv.blush,
-        "bv.musk" = bv.musk
+        "bv.musk" = bv.musk,
+        "bv.charcoal" = bv.charcoal,
+        "bv.black" = bv.black,
+        "bv.smoke" = bv.smoke,
+        "bv.white" = bv.white
       )
   )
 usethis::use_data(bv_colours, overwrite = TRUE)

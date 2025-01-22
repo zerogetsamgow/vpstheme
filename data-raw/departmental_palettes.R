@@ -17,7 +17,7 @@ dh_colours =
     "tints_pink" =
       make_tints(bv.pink),
     "tints_dark" =
-      make_tints(bv.pink,"black"),
+      make_tints(bv.pink,bv.black),
     "tints_orange" =
       make_tints(bv.orange),
     "tints_blue" =

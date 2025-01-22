@@ -11,24 +11,28 @@ knitr::opts_chunk$set(
   fig.path = "man/figures/README-",
   out.width = "100%"
 )
+library(tidyverse)
 ```
 
 # vpstheme
 
-This package is in development. 
+This package is in development.
 
-Version 1.0.0 includes useable palettes and themes for the Department of Health and the Department of Families, Fairness and Housing as well as a range of helper functions, these palettes and themes require refinement.
+Version 2.0.0 includes useable palettes and themes for the Department of Health and the Department of Families, Fairness and Housing as well as a range of helper functions, these palettes and themes require refinement.
 
-Version 1.0.0 also includes `scale_*_dh()` functions that enable the use of the Department of Health's palette for fills and colours in `ggplot()` objects.
+Version 2.0.0 also includes `scale_*_dh()` functions that enable the use of the Department of Health's palette for fills and colours in `ggplot()` objects.
 
 In its current form, the package is useable and provides example code to enable others to extend `theme_vps_foundation()` and adapt `scale_*_dh()` for other departments.
 
 <!-- badges: start -->
 
+![GitHub R package version](https://img.shields.io/github/r-package/v/zerogetsamgow/vpstheme) 
+![GitHub last commit](https://img.shields.io/github/last-commit/zerogetsamgow/vpstheme)
+![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/zerogetsamgow/vpstheme/r.yml)
+
 <!-- badges: end -->
 
 The main purpose of **vpstheme** is to enable R users in the Victorian Public Service to use the colours and fonts defined in the [Brand Victoria Guidelines](https://www.vic.gov.au/brand-victoria-guidelines) to create compliant visualisations in ggplot.
-
 
 ## Installation
 
@@ -47,16 +51,95 @@ At the core of **vpstheme** are elements of Brand Victoria, including colours, p
 
 The Brand Victoria colour palette consists of ten primary colours, shown below.
 
-```{r bv_primary, echo=FALSE, out.height="300px", out.width="700px"}
+```{r bv_primary_table, include = FALSE}
+library(tibble)
+bv.primary.table =
+    dplyr::bind_rows(
+      tibble(
+        name = "bv.navy",
+        hex = "#201547",
+        group = 1L,
+        position = 1L
+      ),
+      tibble(
+        name = "bv.teal",
+        hex = "#00B2A9",
+        group = 1L,
+        position = 2L
+      ),
+      tibble(
+        name = "bv.royal",
+        hex = "#004C97",
+        group = 1L,
+        position = 3L
+      ),
+
+      tibble(
+        name = "bv.charcoal",
+        hex = "#53565A",
+        group = 1L,
+        position = 5L
+      ),
+      tibble(
+        name = "bv.black",
+        hex = "#000000",
+        group = 1L,
+        position = 6L
+      ),
+      tibble(
+        name = "bv.amber",
+        hex = "#ff9e1b",
+        group = 2L,
+        position = 1L),
+      tibble(
+        name = "bv.red",
+        hex = "#af272f",
+        group = 2L,
+        position = 2L),
+      tibble(
+        name = "bv.purple",
+        hex = "#87189D",
+        group = 2L,
+        position = 3L),
+      tibble(
+        name = "bv.smoke",
+        hex = "#d9d9d6",
+        group = 2L,
+        position = 5L),
+      tibble(
+        name = "bv.white",
+        hex = "#FFFFFF",
+        group = 2L,
+        position = 6L),
+    )
+    
+```
+
+```{r bv_primary, echo=FALSE}
 library(vpstheme)
-scales::show_col(bv_colours$primary)
+ggplot(
+  data = bv.primary.table,
+  aes(x = group,
+      y = -position,
+      label = stringr::str_glue("{name}\n{hex}"),
+      fill = name)
+  ) +
+  geom_point(shape = 22, size = 20, show.legend = FALSE) +
+  geom_text(aes(x = group + .2), hjust = 0,
+            colour = bv.charcoal, size = 4) +
+  scale_fill_manual(
+    values = bv_colours$complete
+  ) +
+  scale_y_continuous(limits = c(-6.6,-0.4), expand = c(0,0)) +
+  scale_x_continuous(limits = c(.75,2.75),expand = c(0,0)) +
+  ggthemes::theme_map()
 ```
 
 Incorporating the primary colour palette, the Brand Victoria secondary colour palette is designed to accommodate the great range of applications across all sectors of the brand.
 
 The palette has been categorised in 10 colour groups, from navy to pink, but the colours do not have to be used in these sets.
 
-The included colours and their names, as per this package, are shown below. 
+The included colours and their names, as per this package, are shown below.
 
 > Note, names used in this package have been selected by the package author. Brand Victoria colours don't have names as such.
 
@@ -92,7 +175,7 @@ bv.table =
         name = "bv.azure",
         hex = "#00a9e0",
         group = 2L,
-        position = 1L
+        position = 2L
       ),
       tibble(
         name = "bv.sky",
@@ -113,7 +196,7 @@ bv.table =
         position = 2L
       ),
       tibble(
-        name = "bv.crytal",
+        name = "bv.crystal",
         hex = "#88dbdf",
         group = 3L,
         position = 3L
@@ -184,13 +267,13 @@ bv.table =
       tibble(
         name = "bv.maroon",
         hex = "#8A2A2B",
-        position = 1,
-        group = 8),
+        position = 1L,
+        group = 8L),
       tibble(
         name = "bv.red",
         hex = "#af272f",
-        position = 2,
-        group = 8),
+        position = 2L,
+        group = 8L),
       tibble(
         name = "bv.rose",
         hex = "#D50032",
@@ -228,10 +311,9 @@ bv.table =
         group = 10),
     )
     
-```    
+```
 
-
-```{r bv_names, echo=FALSE, out.height="500px", out.width="1000px"}
+```{r bv_names, echo=FALSE}
 library(ggplot2)
 ggplot(
   data = bv.table,
@@ -241,7 +323,7 @@ ggplot(
       fill = name)
   ) +
   geom_point(shape = 22, size = 23, show.legend = FALSE) +
-  geom_text(colour = bv.smoke, size = 3) +
+  geom_text(colour = bv.white, size = 3) +
   scale_fill_manual(
     values = bv_colours$complete
   ) +
@@ -354,9 +436,9 @@ ggplot(data=iris,aes(x=Sepal.Length, y = Petal.Length,colour=Species)) +
 
 ### `theme_foundation`
 
-Each theme is built on `theme_vps_foundation`. 
+Each theme is built on `theme_vps_foundation`.
 
-This theme is designed to be a foundation from which to build new themes, and not meant to be used directly. `theme_vps_foundation()` is a complete theme with only minimal number of elements defined. It is easier to create new themes by extending this one rather than `theme_gray()` or `theme_bw()` from ***ggplot2***, because those themes define elements deep in the hierarchy. 
+This theme is designed to be a foundation from which to build new themes, and not meant to be used directly. `theme_vps_foundation()` is a complete theme with only minimal number of elements defined. It is easier to create new themes by extending this one rather than `theme_gray()` or `theme_bw()` from ***ggplot2***, because those themes define elements deep in the hierarchy.
 
 This theme takes {[ggthemes]{theme_foundation}()} and sets base text family and size to `Rubik` and `15` as well as setting margins and other parameters to match departmental guidelines.
 
@@ -364,14 +446,15 @@ This theme takes {[ggthemes]{theme_foundation}()} and sets base text family and 
 
 ### Fill and colour
 
-***vpstheme*** includes two functions that enable the use of `dh_colours` as fills and colours in `ggplot()` objects. These functions allow the user to easily use the palettes from `dh_colours` and both operate as wrappers around `scale_*_manual()`. 
+***vpstheme*** includes two functions that enable the use of `dh_colours` as fills and colours in `ggplot()` objects. These functions allow the user to easily use the palettes from `dh_colours` and both operate as wrappers around `scale_*_manual()`.
 
-`scale_colour_dh()` is used in the example above. The code for `scale_*_dh()` provides examples for other who wish to create similar functions for other departments.
+`scale_colour_dh()` is used in the example above. The code for `scale_*_dh()` provides examples for others who wish to create similar functions for other departments.
+
+`scale_colour_dh_line()` provides departmental style guide compliant colours for line charts. Refer to the vignettes for more information
 
 ### Continous axes scales
 
-
-***vpstheme*** includes two functions - `scale_y_continuvps()` and `scale_x_continuvps()` - that enable you to easily use default expansion values for continuous scales in `ggplot()` objects that allow. These functions allow the user to easily use the palettes from `dh_colours` and both operate as wrappers around `scale_*_manual()`. 
+***vpstheme*** includes two functions - `scale_y_continuvps()` and `scale_x_continuvps()` - that enable you to easily use default expansion values for continuous scales in `ggplot()` objects that allow. These functions allow the user to easily use the palettes from `dh_colours` and both operate as wrappers around `scale_*_manual()`.
 
 ## Functions
 
@@ -380,7 +463,6 @@ This theme takes {[ggthemes]{theme_foundation}()} and sets base text family and 
 -   `clean_vic_lga()` based on the [clean_state](https://runapp-aus.github.io/strayr/reference/clean_state.html) function from the ***strayr*** package this function cleans Victorian local government names into consistent formats to help with formatting and joining data.
 
 -   `make_tints` allows you to simply create Brand Victoria compliant tint colour palettes ranging from a specified start colour to white or black in five linear increments. White/black are then excluded from the palette to leave you with four lighter/darker tints of the original colour.
-
 
 ## Acknowledgement
 
@@ -391,4 +473,3 @@ See the following vignettes to learn how to use palletes with other packages:
 -   [Using palettes with ggplot2](https://mccarthy-m-g.github.io/palettes/articles/ggplot2.html)
 
 -   [Compatibility with other colour packages](https://mccarthy-m-g.github.io/palettes/articles/compatibility.html)
-

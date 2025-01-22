@@ -23,9 +23,11 @@ Imports:
     sysfonts,
     dplyr,
     stringr,
-    colorspace,   
+    colorspace,
     jsonlite,
-    curl
+    curl,
+    forcats,
+    vdiffr
 Suggests: 
     knitr,
     tibble,
