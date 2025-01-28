@@ -12,17 +12,13 @@
 #' @importFrom showtext showtext_auto
 
 install_vic_fonts <- function() {
-  # Add fonts
-  # vic.url = "https://www.vic.gov.au/sites/default/files/2018-12/Vic-Font-OTF.zip"
-  #  download.file(vic.url, basename(vic.url))
-  #  unzip(basename(vic.url), exdir = "./VIC")
-
-  sysfonts::font_add("VIC",
-                     regular = "./OTF/VIC-regular.otf",
-                     bold = "./OTF/VIC-bold.otf",
-                     italic = "./OTF/inst/VIC-italic.otf",
-                     bolditalic = "./OTF/inst/VIC-bolditalic.otf"
-                     )
+  # Add fonts saved in package
+  sysfonts::font_add(
+    "VIC",
+    regular = "./inst/fonts/VIC-Regular.otf",
+    bold = "./inst/fonts/VIC-Bold.otf",
+    italic = "./inst/fonts/VIC-italic.otf"
+  )
   # Tell R to render text using showtext by calling the showtext_auto() function
   showtext::showtext_auto()
 }

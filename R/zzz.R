@@ -1,3 +1,3 @@
-.onAttach <- function(libname, pkgname) {
-   install_rubik_fonts()
+.onLoad <- function(libname, pkgname) {
+  install_rubik_fonts()
 }
