@@ -6,13 +6,16 @@
 \usage{
 theme_vps_dffh(
   base_colour = c("white", "teal", "mint", "blue", "purple"),
-  base_size = 15
+  base_size = 15,
+  show_gridlines = FALSE
 )
 }
 \arguments{
 \item{base_colour}{A text string that is used to set background, line and text colours for the theme}
 
 \item{base_size}{An integer that is used to set the base font size}
+
+\item{show_gridlines}{Add gridlines on the y-axis, defaults to FALSE. Use TRUE for gridlines.}
 }
 \description{
 This theme takes \code{\link[vpstheme]{theme_vps_foundation}()} and applies
@@ -27,6 +30,7 @@ Other vpstheme:
 \code{\link{install_vic_fonts}()},
 \code{\link{make_tints}()},
 \code{\link{scale_colour_dffh}()},
+\code{\link{scale_colour_dffh_line}()},
 \code{\link{scale_colour_dh}()},
 \code{\link{scale_colour_dh_line}()},
 \code{\link{scale_fill_dffh}()},

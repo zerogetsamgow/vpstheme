@@ -18,6 +18,7 @@ Other vpstheme:
 \code{\link{install_rubik_fonts}()},
 \code{\link{make_tints}()},
 \code{\link{scale_colour_dffh}()},
+\code{\link{scale_colour_dffh_line}()},
 \code{\link{scale_colour_dh}()},
 \code{\link{scale_colour_dh_line}()},
 \code{\link{scale_fill_dffh}()},

@@ -156,17 +156,29 @@ Currently, the package includes themes for:
 
 ``` r
 library(ggplot2)
+# Create plot with theme, scales and labs, then coord_flip()
 ggplot(
-  data=iris,
-  aes(x=Sepal.Length, y = Petal.Length,colour=Species)) +
-  geom_point(size=3) +
-  scale_colour_dh(
-    palette = "primary",
-    labels = stringr::str_to_title) +
-  scale_x_continuous(name="Sepal length")+
-  scale_y_continuous(name="Petal length")+
-  labs(title="Sepal and petal lengths of irises")+
-  theme_vps_dh(base_colour = "white")
+  data = airport_flights, 
+  aes(
+    x = reorder(city, flights), 
+    y = flights)) +
+  geom_col(aes(fill = city)) +
+ 
+  geom_text(
+    aes(label = flights/1e6,
+        y = 2e6),
+    colour = bv.smoke,
+    hjust = 1, size = 5) +
+  coord_flip() +
+  # Use scale_fill_manual to highlight Milan
+  scale_fill_manual(values = c("Milan"=bv.pink), guide = "none") +
+  scale_x_discrete(name = NULL) +
+  scale_y_continuvps(
+    name = "Flights per year, millions", 
+    labels = scales::label_number(scale = 1/1e6),  
+    limits = c(0,50e6)) +
+  labs(title="Flights at major international airports")+
+  theme_vps_dh()
 ```
 
 <img src="man/figures/README-theme_vps_dh-1.png" width="700px" height="400px" />
@@ -175,20 +187,37 @@ ggplot(
   Housing](https://www.dffh.vic.gov.au/) - `theme_vps_dffh()`.
 
 ``` r
-ggplot(data=iris,aes(x=Sepal.Length, y = Petal.Length,colour=Species)) +
-  geom_point(size=3) +
-  scale_colour_manual(values=dffh_colours$core,labels=stringr::str_to_title) +
-  scale_x_continuous(name="Sepal length")+
-  scale_y_continuous(name="Petal length")+
-  labs(title="Sepal and petal lengths of irises")+
+ggplot(
+  data = line_data, 
+  aes(
+    x = year, 
+    y = trips,
+    fill = Region,
+    colour = Region,
+    )
+  ) +
+  # Add line chart
+  geom_line() +
+   # Add labels using geom_text
+  geom_text(
+    data = line_data |> 
+      # Filter data to only add labels for max(year)
+      dplyr::filter(year == max(year)),
+    aes(label = Region), 
+    size = 5,
+    # Shift to right of x value.
+    hjust = -.1) +
+  # Use scale_x_continuvps to easily add space for label.
+  scale_x_continuvps(name = NULL, expand_left = .05, expand_right = .2) +
+  scale_y_continuvps(name = "Number of Trips", limits = c(0,500)) +
+  scale_colour_dffh_line(name = NULL, guide = "none") +
   theme_vps_dffh()
 ```
 
 <img src="man/figures/README-theme_vps_dffh-1.png" width="700px" height="400px" />
 
 The themes at present largely only differ in the background colours that
-can be specified. `theme_vps_dh()` has additional functionality and
-specifications.
+can be specified.
 
 - the base_colour parameter of `theme_vps_dh` can take values `pink`,
   `orange`, `red` and `blue` that correspond to the department’s primary
@@ -201,13 +230,28 @@ specifications.
 For example:
 
 ``` r
-ggplot(data=iris,aes(x=Sepal.Length, y = Petal.Length,colour=Species)) +
-  geom_point(size=3) +
-  scale_colour_manual(values=dffh_colours$core[2:4],labels=stringr::str_to_title) +
-  scale_x_continuous(name="Sepal length")+
-  scale_y_continuous(name="Petal length")+
-  labs(title="Sepal and petal lengths of irises")+
-  theme_vps_dffh(base_colour = "teal")
+ggplot(
+  data = airport_flights, 
+  aes(
+    x = reorder(city, flights), 
+    y = flights)) +
+  geom_col(aes(fill = city)) +
+  geom_text(
+    aes(label = flights/1e6,
+        colour = city,
+        y = 2e6),
+    hjust = 1, size = 5) +
+  coord_flip() +
+  # Use scale_fill_manual to highlight Milan
+  scale_fill_manual(values = c("Milan"=bv.charcoal), guide = "none", na.value = bv.smoke) +
+  scale_colour_manual(values = c("Milan" = bv.smoke), guide = "none", na.value = bv.charcoal) +
+  scale_x_discrete(name = NULL) +
+  scale_y_continuvps(
+    name = "Flights per year, millions", 
+    labels = scales::label_number(scale = 1/1e6),  
+    limits = c(0,50e6)) +
+  labs(title="Flights at major international airports")+
+  theme_vps_dh("pink")
 ```
 
 <img src="man/figures/README-theme_vps_dffh_teal-1.png" width="700px" height="400px" />
@@ -240,8 +284,9 @@ operate as wrappers around `scale_*_manual()`.
 `scale_*_dh()` provides examples for others who wish to create similar
 functions for other departments.
 
-`scale_colour_dh_line()` provides departmental style guide compliant
-colours for line charts. Refer to the vignettes for more information
+`scale_colour_dh_line()` and `scale_colour_dffh_line()` provide
+departmental style guide compliant colours for line charts. Refer to the
+vignette for more information.
 
 ### Continous axes scales
 
