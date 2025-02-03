@@ -6,13 +6,16 @@
 \usage{
 scale_colour_dffh(
   ...,
-  palette = c("core", "extended", "support", "teals", "greens", "blues", "purples")
+  palette = c("core", "extended", "support", "teals", "greens", "blues", "purples"),
+  reverse = FALSE
 )
 }
 \arguments{
 \item{...}{Arguments passed on to scale_colour_manual}
 
 \item{palette}{A text string that is used to select the palette to use}
+
+\item{reverse}{A logical to reverse order of palette}
 }
 \description{
 This function is a wrapper around \code{\link[ggplot2]{scale_colour_manual}()} that supplies a

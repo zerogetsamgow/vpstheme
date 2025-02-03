@@ -8,10 +8,13 @@
 #' @export
 #' @param ... Arguments passed on to scale_colour_manual
 #' @param palette A text string that is used to select the palette to use
+#' @param reverse A logical to reverse order of palette
 #' @importFrom ggplot2 scale_colour_manual
 #' @importFrom stringr str_to_lower
 
-scale_colour_dffh =  function(..., palette = c("core","extended","support","teals","greens","blues","purples")) {
+scale_colour_dffh =  function(...,
+                              palette = c("core","extended","support","teals","greens","blues","purples"),
+                              reverse = FALSE) {
 
   if(is.null(palette)) {palette = "core"}
   if(length(palette)>1) {palette = "core"}
@@ -27,6 +30,8 @@ scale_colour_dffh =  function(..., palette = c("core","extended","support","teal
       "blues" = vpstheme::dffh_colours$tints_blue,
       "purples" = vpstheme::dffh_colours$tints_purple
     )
+  # Reverse to get correct order when applied to factored data
+  if(reverse) {.palette = rev(.palette)}
 
   return(scale_colour_manual(..., values = .palette))
 }
@@ -41,10 +46,13 @@ scale_colour_dffh =  function(..., palette = c("core","extended","support","teal
 #' @export
 #' @param ... Arguments passed on to scale_fill_manual
 #' @param palette A text string that is used to select the palette to use
+#' @param reverse A logical to reverse order of palette
 #' @importFrom ggplot2 scale_fill_manual
 #' @importFrom stringr str_to_lower
 
-scale_fill_dffh = function(..., palette = c("core","extended","support","teals","greens","blues","purples")) {
+scale_fill_dffh = function(...,
+                           palette = c("core","extended","support","teals","greens","blues","purples"),
+                           reverse = FALSE)  {
 
   if(is.null(palette)) {palette = "core"}
   if(length(palette)>1) {palette = "core"}
@@ -60,6 +68,9 @@ scale_fill_dffh = function(..., palette = c("core","extended","support","teals",
       "blues" = vpstheme::dffh_colours$tints_blue,
       "purples" = vpstheme::dffh_colours$tints_purple
     )
+  # Reverse to get correct order when applied to factored data
+  if(reverse) {.palette = rev(.palette)}
+
 
   return(scale_fill_manual(..., values = .palette))
 }
