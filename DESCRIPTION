@@ -1,7 +1,7 @@
 Package: vpstheme
 Type: Package
 Title: A collection of themes and functions for R users in the VPS
-Version: 2.3.0
+Version: 2.3.1
 Authors@R: c(
     person("Sam", "Gow", email = "sam.gow@gmail.com", role = c("aut", "cre"))
   )
@@ -29,7 +29,6 @@ Imports:
 Suggests: 
     knitr,
     forcats,
-    jsonlite,
     vdiffr,
     tibble,
     scales,

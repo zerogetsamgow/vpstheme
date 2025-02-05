@@ -15,13 +15,13 @@ dh_colours =
         bv.cobalt,
         bv.rose),
     "tints_pink" =
-      make_tints(bv.pink),
+      vpstheme::make_tints(bv.pink),
     "tints_dark" =
-      make_tints(bv.pink,bv.black),
+      vpstheme::make_tints(bv.pink,bv.black),
     "tints_orange" =
-      make_tints(bv.orange),
+      vpstheme::make_tints(bv.orange),
     "tints_blue" =
-      make_tints(bv.cobalt)
+      vpstheme::make_tints(bv.cobalt)
   )
 usethis::use_data(dh_colours, overwrite = TRUE)
 
@@ -48,13 +48,13 @@ dffh_colours =
         bv.pink,
         bv.red),
     "tints_teal" =
-      make_tints(bv.teal),
+      vpstheme::make_tints(bv.teal),
     "tints_green" =
-      make_tints(bv.mint),
+      vpstheme::make_tints(bv.mint),
     "tints_blue" =
-      make_tints(bv.cerulean),
+      vpstheme::make_tints(bv.cerulean),
     "tints_purple" =
-      make_tints(bv.purple)
+      vpstheme::make_tints(bv.purple)
   )
 
 usethis::use_data(dffh_colours, overwrite = TRUE)
