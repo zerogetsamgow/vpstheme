@@ -32,7 +32,7 @@ dffh_colours =
     "core" =
       c(
         bv.teal,
-        bv.mint,
+        bv.jade,
         bv.cerulean,
         bv.purple
       ),
@@ -50,7 +50,7 @@ dffh_colours =
     "tints_teal" =
       vpstheme::make_tints(bv.teal),
     "tints_green" =
-      vpstheme::make_tints(bv.mint),
+      vpstheme::make_tints(bv.jade),
     "tints_blue" =
       vpstheme::make_tints(bv.cerulean),
     "tints_purple" =

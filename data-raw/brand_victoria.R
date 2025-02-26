@@ -9,8 +9,8 @@ usethis::use_data(bv.navy, overwrite = TRUE)
 bv.royal = palettes::pal_colour("#004c97")
 usethis::use_data(bv.royal, overwrite = TRUE)
 
-  bv.cobalt = palettes::pal_colour("#0072ce")
-  usethis::use_data(bv.cobalt, overwrite = TRUE)
+bv.cobalt = palettes::pal_colour("#0072ce")
+usethis::use_data(bv.cobalt, overwrite = TRUE)
 
 # Group 3
 # bv.teal is the primary colour of the group
