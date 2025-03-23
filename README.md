@@ -307,6 +307,11 @@ include:
   local government names into consistent formats to help with formatting
   and joining data.
 
+- `coord_vps_map()` quickly limit the extent of maps to the coordinates
+  of Victoria or Melbourne. The former taken from
+  [LandVic](https://www.land.vic.gov.au/maps-and-spatial/first-time-here/geographic-facts)
+  and the latter author defined.
+
 - `make_tints` allows you to simply create Brand Victoria compliant tint
   colour palettes ranging from a specified start colour to white or
   black in five linear increments. White/black are then excluded from

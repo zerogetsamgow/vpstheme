@@ -535,7 +535,11 @@ This theme takes {[ggthemes]{theme_foundation}()} and sets base text family and 
 
 -   `clean_vic_lga()` based on the [clean_state](https://runapp-aus.github.io/strayr/reference/clean_state.html) function from the ***strayr*** package this function cleans Victorian local government names into consistent formats to help with formatting and joining data.
 
+- `coord_vps_map()` quickly limit the extent of maps to the coordinates of Victoria or Melbourne. The former taken from  [LandVic](https://www.land.vic.gov.au/maps-and-spatial/first-time-here/geographic-facts) and the latter author defined.
+
 -   `make_tints` allows you to simply create Brand Victoria compliant tint colour palettes ranging from a specified start colour to white or black in five linear increments. White/black are then excluded from the palette to leave you with four lighter/darker tints of the original colour.
+
+
 
 ## Acknowledgement
 
