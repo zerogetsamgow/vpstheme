@@ -21,6 +21,7 @@ This function allows these tints to be created in a consistent fashion
 }
 \seealso{
 Other vpstheme: 
+\code{\link{coord_vps_map}()},
 \code{\link{install_rubik_fonts}()},
 \code{\link{install_vic_fonts}()},
 \code{\link{scale_colour_dffh}()},

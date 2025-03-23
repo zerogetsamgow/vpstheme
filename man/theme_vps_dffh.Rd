@@ -26,6 +26,7 @@ Colours are sourced from `vpstheme` and are Department style guide compliant.
 }
 \seealso{
 Other vpstheme: 
+\code{\link{coord_vps_map}()},
 \code{\link{install_rubik_fonts}()},
 \code{\link{install_vic_fonts}()},
 \code{\link{make_tints}()},

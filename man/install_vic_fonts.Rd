@@ -15,6 +15,7 @@ within the package
 }
 \seealso{
 Other vpstheme: 
+\code{\link{coord_vps_map}()},
 \code{\link{install_rubik_fonts}()},
 \code{\link{make_tints}()},
 \code{\link{scale_colour_dffh}()},

@@ -48,9 +48,9 @@ scale_colour_dh = function(...,
 #' @importFrom ggplot2 scale_fill_manual
 #' @importFrom stringr str_to_lower
 
-scale_fill_dh =function(...,
-                        palette = c("primary","secondary","pinks","oranges","blues"),
-                        reverse = FALSE) {
+scale_fill_dh = function(...,
+                         palette = c("primary","secondary","pinks","oranges","blues"),
+                         reverse = FALSE) {
 
   if(is.null(palette)) {palette = "primary"}
   if(length(palette)>1) {palette = "primary"}

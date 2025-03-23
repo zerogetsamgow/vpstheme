@@ -14,6 +14,7 @@ This function allow this font to be installed within the package
 }
 \seealso{
 Other vpstheme: 
+\code{\link{coord_vps_map}()},
 \code{\link{install_vic_fonts}()},
 \code{\link{make_tints}()},
 \code{\link{scale_colour_dffh}()},
