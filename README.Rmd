@@ -14,11 +14,13 @@ knitr::opts_chunk$set(
 library(tidyverse)
 ```
 
+# ![](data-raw/hex-vpstheme.png){width="100"}
+
 # vpstheme
 
 This package is in development.
 
-Version 2.0.0 includes useable palettes and themes for the Department of Health and the Department of Families, Fairness and Housing as well as a range of helper functions, these palettes and themes require refinement.
+Version 2.4.0 includes useable palettes and themes for the Department of Health and the Department of Families, Fairness and Housing as well as a range of helper functions, these palettes and themes require refinement.
 
 Version 2.0.0 also includes `scale_*_dh()` functions that enable the use of the Department of Health's palette for fills and colours in `ggplot()` objects.
 
@@ -26,9 +28,7 @@ In its current form, the package is useable and provides example code to enable 
 
 <!-- badges: start -->
 
-![GitHub R package version](https://img.shields.io/github/r-package/v/zerogetsamgow/vpstheme) 
-![GitHub last commit](https://img.shields.io/github/last-commit/zerogetsamgow/vpstheme)
-![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/zerogetsamgow/vpstheme/r.yml)
+![GitHub R package version](https://img.shields.io/github/r-package/v/zerogetsamgow/vpstheme) ![GitHub last commit](https://img.shields.io/github/last-commit/zerogetsamgow/vpstheme) ![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/zerogetsamgow/vpstheme/r.yml)
 
 <!-- badges: end -->
 
@@ -473,8 +473,7 @@ ggplot(
   theme_vps_dffh()
 ```
 
-
-The themes at present largely only differ in the background colours that can be specified. 
+The themes at present largely only differ in the background colours that can be specified.
 
 -   the base_colour parameter of `theme_vps_dh` can take values `pink`, `orange`, `red` and `blue` that correspond to the department's primary colours.
 
@@ -535,11 +534,9 @@ This theme takes {[ggthemes]{theme_foundation}()} and sets base text family and 
 
 -   `clean_vic_lga()` based on the [clean_state](https://runapp-aus.github.io/strayr/reference/clean_state.html) function from the ***strayr*** package this function cleans Victorian local government names into consistent formats to help with formatting and joining data.
 
-- `coord_vps_map()` quickly limit the extent of maps to the coordinates of Victoria or Melbourne. The former taken from  [LandVic](https://www.land.vic.gov.au/maps-and-spatial/first-time-here/geographic-facts) and the latter author defined.
+-   `coord_vps_map()` quickly limit the extent of maps to the coordinates of Victoria or Melbourne. The former taken from [LandVic](https://www.land.vic.gov.au/maps-and-spatial/first-time-here/geographic-facts) and the latter author defined.
 
 -   `make_tints` allows you to simply create Brand Victoria compliant tint colour palettes ranging from a specified start colour to white or black in five linear increments. White/black are then excluded from the palette to leave you with four lighter/darker tints of the original colour.
-
-
 
 ## Acknowledgement
 

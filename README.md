@@ -1,11 +1,13 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
+# <img src="data-raw/hex-vpstheme.png" width="100" />
+
 # vpstheme
 
 This package is in development.
 
-Version 2.0.0 includes useable palettes and themes for the Department of
+Version 2.4.0 includes useable palettes and themes for the Department of
 Health and the Department of Families, Fairness and Housing as well as a
 range of helper functions, these palettes and themes require refinement.
 
