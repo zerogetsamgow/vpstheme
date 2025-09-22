@@ -1,7 +1,7 @@
 Package: vpstheme
 Type: Package
 Title: A collection of themes and functions for R users in the VPS
-Version: 2.4.0
+Version: 2.5.0
 Authors@R: c(
     person("Sam", "Gow", email = "sam.gow@gmail.com", role = c("aut", "cre"))
   )

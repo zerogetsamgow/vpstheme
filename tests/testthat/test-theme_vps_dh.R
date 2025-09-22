@@ -16,3 +16,11 @@ test_p =
 test_that("theme_vps_dh() works", {
   vdiffr::expect_doppelganger("theme_vps_dh", test_p + theme_vps_dh())
 })
+
+test_that("scale_colour_dh() works", {
+  vdiffr::expect_doppelganger("scale_colour_dh", test_p + scale_colour_dh())
+})
+
+test_that("scale_colour_dffh() works", {
+  vdiffr::expect_doppelganger("scale_colour_dffh", test_p + scale_colour_dffh())
+})
