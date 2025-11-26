@@ -31,9 +31,13 @@ Other vpstheme:
 \code{\link{scale_colour_dffh_line}()},
 \code{\link{scale_colour_dh}()},
 \code{\link{scale_colour_dh_line}()},
+\code{\link{scale_colour_djcs}()},
+\code{\link{scale_colour_djcs_line}()},
 \code{\link{scale_fill_dh}()},
+\code{\link{scale_fill_djcs}()},
 \code{\link{theme_vps_dffh}()},
 \code{\link{theme_vps_dh}()},
+\code{\link{theme_vps_djcs}()},
 \code{\link{theme_vps_foundation}()}
 }
 \concept{vpstheme}

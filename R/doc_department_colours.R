@@ -50,3 +50,28 @@
 #' # Plot pink tints
 #' barplot(c(2,5,9,7), col=dffh_colours$tints_teal)
 "dffh_colours"
+
+#' Department of Justice and Community Safety colours
+#'
+#' Department of Justice and Community Safety colour palettes.
+#'
+#' The departments colour palette is based on the Brand Victoria colours,
+#' utilising:
+#'
+#' - `bv.navy`, `bv.sky`, `bv.violet`, `bv.cobalt`, `bv.charcoal`, `bv.smoke` as `primary` colours.
+#' A range of tints based on the primary colours are also included in the palette
+#' e.g. `tints_navy`
+#'
+#' @format ## `djcs_colours`
+#' An object of class `palette` with `r length(djcs_colours)` palettes.
+#' Use `names(djcs_colours)` to return all palette names.
+#'
+#' @source <https://github.com/zerogetsamgow/vpstheme>
+#'
+#' @examples
+#' # Plot primary colours
+#' barplot(c(2,5,9,7), col=djcs_colours$primary)
+#' # Plot pink tints
+#' barplot(c(2,5,9,7), col=djcs_colours$tints_purple)
+"djcs_colours"
+

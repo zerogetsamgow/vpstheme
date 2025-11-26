@@ -58,3 +58,27 @@ dffh_colours =
   )
 
 usethis::use_data(dffh_colours, overwrite = TRUE)
+
+
+# Define Department of Justice and Community Safety colours using Brand Victoria colours
+djcs_colours =
+  palettes::pal_palette(
+    "primary" =
+      c(
+        bv.navy,
+        bv.sky,
+        bv.violet,
+        bv.cobalt,
+        bv.charcoal,
+        bv.smoke),
+    "tints_navy" =
+      vpstheme::make_tints(bv.navy),
+    "tints_purple" =
+      vpstheme::make_tints(bv.violet),
+    "tints_cobalt" =
+      vpstheme::make_tints(bv.cobalt),
+    "tints_charcoal" =
+      vpstheme::make_tints(bv.charcoal)
+  )
+usethis::use_data(djcs_colours, overwrite = TRUE)
+

@@ -20,9 +20,7 @@ library(tidyverse)
 
 This package is in development.
 
-Version 2.4.0 includes useable palettes and themes for the Department of Health and the Department of Families, Fairness and Housing as well as a range of helper functions, these palettes and themes require refinement.
-
-Version 2.0.0 also includes `scale_*_dh()` functions that enable the use of the Department of Health's palette for fills and colours in `ggplot()` objects.
+Version 2.6.0 includes useable palettes and themes for the Department of Health, the Department of Families, Fairness and Housing and the Department of Justice and Community Safety as well as a range of helper functions, these palettes and themes require refinement.
 
 In its current form, the package is useable and provides example code to enable others to extend `theme_vps_foundation()` and adapt `scale_*_dh()` for other departments.
 
@@ -376,6 +374,16 @@ scales::show_col(unlist(dffh_colours[4:7]), ncol = 4)
 
 ```
 
+-   [Department of Justice and Community Safety](https://www.justics.vic.gov.au/) - `djcs_colours` is based on the departments standard templates, with a `primary` colour for each template and `tints` for each primary colour.
+
+```{r djcs_tints, out.height="400px", out.width="700px"}
+scales::show_col(unlist(djcs_colours[1]), ncol = 3)
+
+```
+```{r djcs_colours, out.height="400px", out.width="700px"}
+scales::show_col(unlist(djcs_colours[2:4]), ncol = 4)
+
+```
 ### Themes
 
 ***vpstheme*** is designed to enable R users in the VPS to produce ***ggplot2*** products that comply with departmental style guides simply.
@@ -473,11 +481,44 @@ ggplot(
   theme_vps_dffh()
 ```
 
+-   [Department of Justice and COmmunity Safety](https://www.justice.vic.gov.au/) - `theme_vps_djcs()`.
+
+```{r djcs_setup_djcs, include = FALSE}
+# Create tibble of data for example
+car_accidents = 
+  tibble::tibble(
+    month = rep(c("Jan","Feb","Mar","Apr","May"),4), 
+    freeway = c(rep("M1",5),rep("M2",5),rep("M3",5),rep("M4",5)), 
+    accidents = c(10, 5, 45, 10, 16, 
+                  20, 10, 40, 12, 10, 
+                  30, 15, 25, 14, 18, 
+                  25, 20, 15, 18, 10)) |> 
+  dplyr::mutate(month = factor(month, levels = month.abb), freeway = factor(freeway))
+```
+
+```{r theme_vps_djcs, out.height="400px", out.width="700px"}
+# example of multi colour column plot
+ggplot(data = car_accidents, 
+       aes(x = month, 
+           y = accidents, 
+           fill = freeway)) + 
+  # by default multi category columns will be stacked, we can adjust using `position` 
+  geom_col(position = position_dodge()) + 
+  theme_vps_djcs() +
+  scale_x_discrete(name = NULL) + 
+  scale_y_continuvps(name = "Number of accidents") +
+ # Add scale_fill_djcs and specify the navys palette
+  scale_fill_djcs(palette = "navys", name = NULL)  
+```
+
+
 The themes at present largely only differ in the background colours that can be specified.
 
 -   the base_colour parameter of `theme_vps_dh` can take values `pink`, `orange`, `red` and `blue` that correspond to the department's primary colours.
 
 -   the base_colour parameter of `theme_vps_dffh` can take values `teal`, `mint`, `blue` and `purple` that correspond to the department's core colours.
+
+-   the base_colour parameter of `theme_vps_djcs` can take values `navy`, `charcoal`, and `purple` that correspond to the department's core colours.
 
 For example:
 

@@ -7,13 +7,10 @@
 
 This package is in development.
 
-Version 2.4.0 includes useable palettes and themes for the Department of
-Health and the Department of Families, Fairness and Housing as well as a
-range of helper functions, these palettes and themes require refinement.
-
-Version 2.0.0 also includes `scale_*_dh()` functions that enable the use
-of the Department of Health’s palette for fills and colours in
-`ggplot()` objects.
+Version 2.6.0 includes useable palettes and themes for the Department of
+Health, the Department of Families, Fairness and Housing and the
+Department of Justice and Community Safety as well as a range of helper
+functions, these palettes and themes require refinement.
 
 In its current form, the package is useable and provides example code to
 enable others to extend `theme_vps_foundation()` and adapt
@@ -139,7 +136,23 @@ scales::show_col(unlist(dffh_colours[4:7]), ncol = 4)
 
 <img src="man/figures/README-dffh_tints-1.png" width="700px" height="400px" />
 
-### Themes
+- [Department of Justice and Community
+  Safety](https://www.justics.vic.gov.au/) - `djcs_colours` is based on
+  the departments standard templates, with a `primary` colour for each
+  template and `tints` for each primary colour.
+
+``` r
+scales::show_col(unlist(djcs_colours[1]), ncol = 3)
+```
+
+<img src="man/figures/README-djcs_tints-1.png" width="700px" height="400px" />
+
+``` r
+scales::show_col(unlist(djcs_colours[2:4]), ncol = 4)
+```
+
+<img src="man/figures/README-djcs_colours-1.png" width="700px" height="400px" />
+\### Themes
 
 ***vpstheme*** is designed to enable R users in the VPS to produce
 ***ggplot2*** products that comply with departmental style guides
@@ -218,6 +231,26 @@ ggplot(
 
 <img src="man/figures/README-theme_vps_dffh-1.png" width="700px" height="400px" />
 
+- [Department of Justice and COmmunity
+  Safety](https://www.justice.vic.gov.au/) - `theme_vps_djcs()`.
+
+``` r
+# example of multi colour column plot
+ggplot(data = car_accidents, 
+       aes(x = month, 
+           y = accidents, 
+           fill = freeway)) + 
+  # by default multi category columns will be stacked, we can adjust using `position` 
+  geom_col(position = position_dodge()) + 
+  theme_vps_djcs() +
+  scale_x_discrete(name = NULL) + 
+  scale_y_continuvps(name = "Number of accidents") +
+ # Add scale_fill_djcs and specify the navys palette
+  scale_fill_djcs(palette = "navys", name = NULL)  
+```
+
+<img src="man/figures/README-theme_vps_djcs-1.png" width="700px" height="400px" />
+
 The themes at present largely only differ in the background colours that
 can be specified.
 
@@ -227,6 +260,10 @@ can be specified.
 
 - the base_colour parameter of `theme_vps_dffh` can take values `teal`,
   `mint`, `blue` and `purple` that correspond to the department’s core
+  colours.
+
+- the base_colour parameter of `theme_vps_djcs` can take values `navy`,
+  `charcoal`, and `purple` that correspond to the department’s core
   colours.
 
 For example:
