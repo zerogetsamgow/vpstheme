@@ -152,7 +152,8 @@ scales::show_col(unlist(djcs_colours[2:4]), ncol = 4)
 ```
 
 <img src="man/figures/README-djcs_colours-1.png" width="700px" height="400px" />
-\### Themes
+
+### Themes
 
 ***vpstheme*** is designed to enable R users in the VPS to produce
 ***ggplot2*** products that comply with departmental style guides

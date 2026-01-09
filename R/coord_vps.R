@@ -32,7 +32,7 @@ coord_vps_map = function(...,
     switch(
       stringr::str_to_lower(extent),
       "victoria" = c(-33.55,-39.1),
-      "melbourne" = c(-37.45,-38.46)
+      "melbourne" = c(-37.43,-38.46)
     )
 
   # Return coord_sg using limits chosen.

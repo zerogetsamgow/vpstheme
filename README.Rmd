@@ -384,6 +384,7 @@ scales::show_col(unlist(djcs_colours[1]), ncol = 3)
 scales::show_col(unlist(djcs_colours[2:4]), ncol = 4)
 
 ```
+
 ### Themes
 
 ***vpstheme*** is designed to enable R users in the VPS to produce ***ggplot2*** products that comply with departmental style guides simply.

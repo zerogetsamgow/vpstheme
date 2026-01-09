@@ -23,9 +23,7 @@ Imports:
     sysfonts,
     dplyr,
     stringr,
-    colorspace,
-    curl,
-    jsonlite
+    colorspace
 Suggests: 
     knitr,
     forcats,
@@ -33,6 +31,8 @@ Suggests:
     tibble,
     scales,
     rmarkdown,
-    testthat (>= 3.0.0)
+    testthat (>= 3.0.0),
+    curl,
+    jsonlite
 VignetteBuilder: knitr
 Config/testthat/edition: 3
