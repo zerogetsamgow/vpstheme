@@ -59,7 +59,7 @@ scale_fill_djcs = function(...,
       stringr::str_to_lower(palette),
       "primary" = vpstheme::djcs_colours$primary,
       "navys" = vpstheme::djcs_colours$tints_navy,
-      "purples" = vpstheme::djcs_colours$tints_purples,
+      "purples" = vpstheme::djcs_colours$tints_purple,
       "light" = vpstheme::djcs_colours$tints_light
     )
   # Reverse to get correct order when applied to factored data
