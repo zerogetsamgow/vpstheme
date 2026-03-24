@@ -14,6 +14,15 @@ dh_colours =
         bv.amber,
         bv.cobalt,
         bv.rose),
+    "combined" =
+      c( bv.pink,
+         bv.orange,
+         bv.royal,
+         bv.red,
+         bv.blush,
+         bv.amber,
+         bv.cobalt,
+         bv.rose),
     "tints_pink" =
       vpstheme::make_tints(bv.pink),
     "tints_dark" =
@@ -47,6 +56,20 @@ dffh_colours =
         bv.orange,
         bv.pink,
         bv.red),
+    "combined" =
+      c(
+        bv.teal,
+        bv.jade,
+        bv.cerulean,
+        bv.purple,
+        bv.navy,
+        bv.charcoal,
+        bv.smoke,
+        bv.white,
+        bv.orange,
+        bv.pink,
+        bv.red
+      ),
     "tints_teal" =
       vpstheme::make_tints(bv.teal),
     "tints_green" =
@@ -71,6 +94,17 @@ djcs_colours =
         bv.cobalt,
         bv.charcoal,
         bv.smoke),
+    "chart" =
+      c(
+        bv.cerulean,
+        bv.royal,
+        bv.navy,
+        bv.purple,
+        bv.sky,
+        bv.violet,
+        bv.charcoal,
+        bv.smoke
+      ),
     "tints_navy" =
       vpstheme::make_tints(bv.navy),
     "tints_purple" =
