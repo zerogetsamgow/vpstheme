@@ -29,6 +29,7 @@ names(lga_dict) <- lga_dict_tbl$lga_abbr
 
 # Add known missing cases
 lga_dict <- c(lga_dict,
+              "Merri-bek" = "City of Moreland",
               "Merri-bek" = "Moreland",
               "Melton" = "Shire of Melton",
               "Colac Otway" = "Colac-Otway",
