@@ -1,26 +1,29 @@
 # Create lookup tables of state names and abbreviations
-library(tidyverse)
 
 # Get data saved locally
-lga_table = read_csv("./inst/extdata/lga_dict.csv") |>
-  mutate_all(as.character)
+lga_table =
+  readr::read_csv(
+    "./inst/extdata/lga_dict.csv",
+    show_col_types = FALSE) |>
+  dplyr::mutate_all(as.character)
 
 # Create dictionary tibble
 lga_dict_tbl =
   lga_table |>
-  pivot_longer(
+  tidyr::pivot_longer(
     -lga_abbr,
     names_to = "type",
     values_to = "alias")
 
 # lga_abbr type to above
 lga_dict_tbl =
-  bind_rows(
+  dplyr::bind_rows(
     lga_dict_tbl,
     lga_table |>
-    select(lga_abbr) %>%
-    mutate(alias = lga_abbr,
-           type = "lga_abbr")
+      dplyr::select(lga_abbr)  |>
+      dplyr::mutate(
+        alias = lga_abbr,
+        type = "lga_abbr")
   )
 
 # create dictionary as character vector
@@ -44,7 +47,7 @@ lga_dict <- c(lga_dict,
               )
 
 # Add no spaced versions
-nospaces <- str_remove_all(lga_table$lga_name, " ")
+nospaces <- stringr::str_remove_all(lga_table$lga_name, " ")
 names(nospaces) <- lga_table$lga_abbr
 
 lga_dict <- c(lga_dict, nospaces)
