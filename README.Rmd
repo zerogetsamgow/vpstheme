@@ -11,7 +11,6 @@ knitr::opts_chunk$set(
   fig.path = "man/figures/README-",
   out.width = "100%"
 )
-library(tidyverse)
 ```
 
 # ![](data-raw/hex-vpstheme.png){width="100"}
@@ -50,61 +49,61 @@ At the core of **vpstheme** are elements of Brand Victoria, including colours, p
 The Brand Victoria colour palette consists of ten primary colours, shown below.
 
 ```{r bv_primary_table, include = FALSE}
-library(tibble)
+library(vpstheme)
 bv.primary.table =
     dplyr::bind_rows(
-      tibble(
+      tibble::tibble(
         name = "bv.navy",
         hex = "#201547",
         group = 1L,
         position = 1L
       ),
-      tibble(
+      tibble::tibble(
         name = "bv.teal",
         hex = "#00B2A9",
         group = 1L,
         position = 2L
       ),
-      tibble(
+      tibble::tibble(
         name = "bv.royal",
         hex = "#004C97",
         group = 1L,
         position = 3L
       ),
 
-      tibble(
+      tibble::tibble(
         name = "bv.charcoal",
         hex = "#53565A",
         group = 1L,
         position = 5L
       ),
-      tibble(
+      tibble::tibble(
         name = "bv.black",
         hex = "#000000",
         group = 1L,
         position = 6L
       ),
-      tibble(
+      tibble::tibble(
         name = "bv.amber",
         hex = "#ff9e1b",
         group = 2L,
         position = 1L),
-      tibble(
+      tibble::tibble(
         name = "bv.red",
         hex = "#af272f",
         group = 2L,
         position = 2L),
-      tibble(
+      tibble::tibble(
         name = "bv.purple",
         hex = "#87189D",
         group = 2L,
         position = 3L),
-      tibble(
+      tibble::tibble(
         name = "bv.smoke",
         hex = "#d9d9d6",
         group = 2L,
         position = 5L),
-      tibble(
+      tibble::tibble(
         name = "bv.white",
         hex = "#FFFFFF",
         group = 2L,
@@ -115,21 +114,26 @@ bv.primary.table =
 
 ```{r bv_primary, echo=FALSE}
 library(vpstheme)
-ggplot(
+ggplot2::ggplot(
   data = bv.primary.table,
-  aes(x = group,
+  ggplot2::aes(x = group,
       y = -position,
       label = stringr::str_glue("{name}\n{hex}"),
       fill = name)
   ) +
-  geom_point(shape = 22, size = 20, show.legend = FALSE) +
-  geom_text(aes(x = group + .2), hjust = 0,
-            colour = bv.charcoal, size = 4) +
-  scale_fill_manual(
+  ggplot2::geom_point(shape = 22, size = 20, show.legend = FALSE) +
+  ggplot2::geom_text(
+    ggplot2::aes(x = group + .2), 
+    hjust = 0,
+    colour = bv.charcoal, 
+    size = 4) +
+  ggplot2::scale_fill_manual(
     values = bv_colours$complete
   ) +
-  scale_y_continuous(limits = c(-6.6,-0.4), expand = c(0,0)) +
-  scale_x_continuous(limits = c(.75,2.75),expand = c(0,0)) +
+  ggplot2::scale_y_continuous(
+    limits = c(-6.6,-0.4), expand = c(0,0)) +
+  ggplot2::scale_x_continuous(
+    limits = c(.75,2.75),expand = c(0,0)) +
   ggthemes::theme_map()
 ```
 
@@ -145,164 +149,164 @@ The included colours and their names, as per this package, are shown below.
 library(tibble)
 bv.table =
     dplyr::bind_rows(
-      tibble(
+      tibble::tibble(
         name = "bv.navy",
         hex = "#201547",
         group = 1L,
         position = 1L
       ),
-      tibble(
+      tibble::tibble(
         name = "bv.royal",
         hex = "#004C97",
         group = 1L,
         position = 2L
       ),
-      tibble(
+      tibble::tibble(
         name = "bv.cobalt",
         hex = "#0072CE",
         group = 1L,
         position = 3L
       ),
-      tibble(
+      tibble::tibble(
         name = "bv.cerulean",
         hex = "#0090DA",
         group = 2L,
         position = 1L
       ),
-      tibble(
+      tibble::tibble(
         name = "bv.azure",
         hex = "#00a9e0",
         group = 2L,
         position = 2L
       ),
-      tibble(
+      tibble::tibble(
         name = "bv.sky",
         hex = "#71C5E8",
         group = 2L,
         position = 3L
       ),
-      tibble(
+      tibble::tibble(
         name = "bv.cyan",
         hex = "#009ca6",
         group = 3L,
         position = 1L
       ),
-      tibble(
+      tibble::tibble(
         name = "bv.teal",
         hex = "#00B2A9",
         group = 3L,
         position = 2L
       ),
-      tibble(
+      tibble::tibble(
         name = "bv.crystal",
         hex = "#88dbdf",
         group = 3L,
         position = 3L
       ),
-      tibble(
+      tibble::tibble(
         name = "bv.forest",
         hex = "#00573f",
         group = 4L,
         position = 1L
       ),
-     tibble(
+     tibble::tibble(
         name = "bv.jade",
         hex = "#007b4b",
         group = 4L,
         position = 2L
       ),
-      tibble(
+     tibble::tibble(
         name = "bv.mint",
         hex = "#00b140",
         group = 4L,
         position = 3L
       ),
-     tibble(
+     tibble::tibble(
         name = "bv.lime",
         hex = "#78BE20",
         group = 5L,
         position = 1L),
-      tibble(
+      tibble::tibble(
         name = "bv.chartreuse",
         hex = "#cedc00",
         group = 5L,
         position = 2L),
-      tibble(
+      tibble::tibble(
         name = "bv.canary",
         hex = "#f3e500",
         group = 5L,
         position = 3L),
-     tibble(
+      tibble::tibble(
         name = "bv.sunshine",
         hex = "#F6BE00",
         group = 6L,
         position = 1L),
-     tibble(
+     tibble::tibble(
         name = "bv.butter",
         hex = "#fdda24",
         group = 6L,
         position = 2L),
-     tibble(
+     tibble::tibble(
         name = "bv.yellow",
         hex = "#fbe122",
         group = 6L,
         position = 3L),
-     tibble(
+     tibble::tibble(
        name = "bv.orange",
        hex = "#E35205",
        group = 7L,
        position = 1L),
-     tibble(
+     tibble::tibble(
        name = "bv.fire",
        hex = "#E57200",
        group = 7L,
        position = 2L),
-     tibble(
+     tibble::tibble(
         name = "bv.amber",
         hex = "#ff9e1b",
         group = 7L,
         position = 3L),
-      tibble(
+      tibble::tibble(
         name = "bv.maroon",
         hex = "#8A2A2B",
         position = 1L,
         group = 8L),
-      tibble(
+      tibble::tibble(
         name = "bv.red",
         hex = "#af272f",
         position = 2L,
         group = 8L),
-      tibble(
+      tibble::tibble(
         name = "bv.rose",
         hex = "#D50032",
         position = 3,
         group = 8),
-      tibble(
+      tibble::tibble(
         name = "bv.violet",
         hex = "#500778",
         position = 1,
         group = 9),
-      tibble(
+      tibble::tibble(
         name = "bv.plum",
         hex = "#642667",
         position = 2,
         group = 9),
-      tibble(
+      tibble::tibble(
         name = "bv.purple",
         hex = "#87189D",
         position = 3,
         group = 9),
-      tibble(
+      tibble::tibble(
         name = "bv.pink",
         hex = "#C63663",
         position = 1,
         group = 10),
-      tibble(
+      tibble::tibble(
         name = "bv.blush",
         hex = "#EF4A81",
         position = 2,
         group = 10),
-      tibble(
+      tibble::tibble(
         name = "bv.musk",
         hex = "#E89CAE",
         position = 3,
@@ -313,20 +317,20 @@ bv.table =
 
 ```{r bv_names, echo=FALSE}
 library(ggplot2)
-ggplot(
+ggplot2::ggplot(
   data = bv.table,
-  aes(x = group,
+  ggplot2::aes(x = group,
       y = -position,
       label = stringr::str_glue("{name}\n{hex}"),
       fill = name)
   ) +
-  geom_point(shape = 22, size = 23, show.legend = FALSE) +
-  geom_text(colour = bv.white, size = 3) +
-  scale_fill_manual(
-    values = bv_colours$complete
+  ggplot2::geom_point(shape = 22, size = 23, show.legend = FALSE) +
+  ggplot2::geom_text(colour = vpstheme::bv.white, size = 3) +
+  ggplot2::scale_fill_manual(
+    values = vpstheme::bv_colours$complete
   ) +
-  scale_y_continuous(limits = c(-3,-1), expand = c(.8,.8)) +
-  scale_x_continuous(limits = c(1,10),expand = c(.05,.05)) +
+  ggplot2::scale_y_continuous(limits = c(-3,-1), expand = c(.8,.8)) +
+  ggplot2::scale_x_continuous(limits = c(1,10),expand = c(.05,.05)) +
   ggthemes::theme_map()
 
 ```
@@ -409,27 +413,28 @@ airport_flights =
 ```{r theme_vps_dh, out.height="400px", out.width="700px"}
 library(ggplot2)
 # Create plot with theme, scales and labs, then coord_flip()
-ggplot(
+ggplot2::ggplot(
   data = airport_flights, 
-  aes(
+  ggplot2::aes(
     x = reorder(city, flights), 
     y = flights)) +
-  geom_col(aes(fill = city)) +
- 
-  geom_text(
-    aes(label = flights/1e6,
+  ggplot2::geom_col(
+    ggplot2::aes(fill = city)) +
+  ggplot2::geom_text(
+    ggplot2::aes(label = flights/1e6,
         y = 2e6),
     colour = bv.smoke,
     hjust = 1, size = 5) +
-  coord_flip() +
+  ggplot2::coord_flip() +
   # Use scale_fill_manual to highlight Milan
-  scale_fill_manual(values = c("Milan"=bv.pink), guide = "none") +
-  scale_x_discrete(name = NULL) +
+  ggplot2::scale_fill_manual(
+    values = c("Milan"=bv.pink), guide = "none") +
+  ggplot2::scale_x_discrete(name = NULL) +
   scale_y_continuvps(
     name = "Flights per year, millions", 
     labels = scales::label_number(scale = 1/1e6),  
     limits = c(0,50e6)) +
-  labs(title="Flights at major international airports")+
+  ggplot2::labs(title="Flights at major international airports")+
   theme_vps_dh()
 ```
 
@@ -455,9 +460,9 @@ line_data =
 ```
 
 ```{r theme_vps_dffh, out.height="400px", out.width="700px"}
-ggplot(
+ggplot2::ggplot(
   data = line_data, 
-  aes(
+  ggplot2::aes(
     x = year, 
     y = trips,
     fill = Region,
@@ -465,13 +470,13 @@ ggplot(
     )
   ) +
   # Add line chart
-  geom_line() +
+  ggplot2::geom_line() +
    # Add labels using geom_text
-  geom_text(
+  ggplot2::geom_text(
     data = line_data |> 
       # Filter data to only add labels for max(year)
       dplyr::filter(year == max(year)),
-    aes(label = Region), 
+    ggplot2::aes(label = Region), 
     size = 5,
     # Shift to right of x value.
     hjust = -.1) +
@@ -499,14 +504,16 @@ car_accidents =
 
 ```{r theme_vps_djcs, out.height="400px", out.width="700px"}
 # example of multi colour column plot
-ggplot(data = car_accidents, 
-       aes(x = month, 
-           y = accidents, 
-           fill = freeway)) + 
+ggplot2::ggplot(
+  data = car_accidents, 
+  ggplot2::aes(x = month, 
+      y = accidents,
+      fill = freeway)) + 
   # by default multi category columns will be stacked, we can adjust using `position` 
-  geom_col(position = position_dodge()) + 
+  ggplot2::geom_col(
+    position = ggplot2::position_dodge()) + 
   theme_vps_djcs() +
-  scale_x_discrete(name = NULL) + 
+  ggplot2::scale_x_discrete(name = NULL) + 
   scale_y_continuvps(name = "Number of accidents") +
  # Add scale_fill_djcs and specify the navys palette
   scale_fill_djcs(palette = "navys", name = NULL)  
@@ -524,27 +531,34 @@ The themes at present largely only differ in the background colours that can be 
 For example:
 
 ```{r theme_vps_dffh_teal, out.height="400px", out.width="700px"}
-ggplot(
+ggplot2::ggplot(
   data = airport_flights, 
-  aes(
+  ggplot2::aes(
     x = reorder(city, flights), 
     y = flights)) +
-  geom_col(aes(fill = city)) +
-  geom_text(
-    aes(label = flights/1e6,
-        colour = city,
-        y = 2e6),
+  ggplot2::geom_col(
+    ggplot2::aes(fill = city)) +
+  ggplot2::geom_text(
+    ggplot2::aes(
+      label = flights/1e6,
+      colour = city,
+      y = 2e6),
     hjust = 1, size = 5) +
-  coord_flip() +
+  ggplot2::coord_flip() +
   # Use scale_fill_manual to highlight Milan
-  scale_fill_manual(values = c("Milan"=bv.charcoal), guide = "none", na.value = bv.smoke) +
-  scale_colour_manual(values = c("Milan" = bv.smoke), guide = "none", na.value = bv.charcoal) +
-  scale_x_discrete(name = NULL) +
+  ggplot2::scale_fill_manual(
+    values = c("Milan"=bv.charcoal), 
+    guide = "none", 
+    na.value = bv.smoke) +
+  ggplot2::scale_colour_manual(
+    values = c("Milan" = bv.smoke), guide = "none", 
+    na.value = bv.charcoal) +
+  ggplot2::scale_x_discrete(name = NULL) +
   scale_y_continuvps(
     name = "Flights per year, millions", 
     labels = scales::label_number(scale = 1/1e6),  
     limits = c(0,50e6)) +
-  labs(title="Flights at major international airports")+
+  ggplot2::labs(title="Flights at major international airports")+
   theme_vps_dh("pink")
 ```
 

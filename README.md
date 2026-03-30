@@ -52,7 +52,7 @@ colours, palettes and fonts.
 The Brand Victoria colour palette consists of ten primary colours, shown
 below.
 
-<img src="man/figures/README-bv_primary-1.png" width="100%" />
+<img src="man/figures/README-bv_primary-1.png" alt="" width="100%" />
 
 Incorporating the primary colour palette, the Brand Victoria secondary
 colour palette is designed to accommodate the great range of
@@ -67,7 +67,7 @@ below.
 > Note, names used in this package have been selected by the package
 > author. Brand Victoria colours don’t have names as such.
 
-<img src="man/figures/README-bv_names-1.png" width="100%" />
+<img src="man/figures/README-bv_names-1.png" alt="" width="100%" />
 
 Each colour can be referenced directly using the {bv.\*} format or via
 the palette object, eg `bv_colours$primary[1]` as shown below.
@@ -117,7 +117,7 @@ palettes for:
 scales::show_col(unlist(dh_colours), ncol = 4)
 ```
 
-<img src="man/figures/README-dh_colours-1.png" width="700px" height="400px" />
+<img src="man/figures/README-dh_colours-1.png" alt="" width="700px" height="400px" />
 
 - [Department of Families, Fairness and
   Housing](https://www.dffh.vic.gov.au/) - `dffh_colours` is based on
@@ -128,13 +128,13 @@ scales::show_col(unlist(dh_colours), ncol = 4)
 scales::show_col(unlist(dffh_colours[1:3]), ncol = 4)
 ```
 
-<img src="man/figures/README-dffh_colours-1.png" width="700px" height="400px" />
+<img src="man/figures/README-dffh_colours-1.png" alt="" width="700px" height="400px" />
 
 ``` r
 scales::show_col(unlist(dffh_colours[4:7]), ncol = 4)
 ```
 
-<img src="man/figures/README-dffh_tints-1.png" width="700px" height="400px" />
+<img src="man/figures/README-dffh_tints-1.png" alt="" width="700px" height="400px" />
 
 - [Department of Justice and Community
   Safety](https://www.justics.vic.gov.au/) - `djcs_colours` is based on
@@ -145,13 +145,13 @@ scales::show_col(unlist(dffh_colours[4:7]), ncol = 4)
 scales::show_col(unlist(djcs_colours[1]), ncol = 3)
 ```
 
-<img src="man/figures/README-djcs_tints-1.png" width="700px" height="400px" />
+<img src="man/figures/README-djcs_tints-1.png" alt="" width="700px" height="400px" />
 
 ``` r
 scales::show_col(unlist(djcs_colours[2:4]), ncol = 4)
 ```
 
-<img src="man/figures/README-djcs_colours-1.png" width="700px" height="400px" />
+<img src="man/figures/README-djcs_colours-1.png" alt="" width="700px" height="400px" />
 
 ### Themes
 
@@ -173,39 +173,40 @@ Currently, the package includes themes for:
 ``` r
 library(ggplot2)
 # Create plot with theme, scales and labs, then coord_flip()
-ggplot(
+ggplot2::ggplot(
   data = airport_flights, 
-  aes(
+  ggplot2::aes(
     x = reorder(city, flights), 
     y = flights)) +
-  geom_col(aes(fill = city)) +
- 
-  geom_text(
-    aes(label = flights/1e6,
+  ggplot2::geom_col(
+    ggplot2::aes(fill = city)) +
+  ggplot2::geom_text(
+    ggplot2::aes(label = flights/1e6,
         y = 2e6),
     colour = bv.smoke,
     hjust = 1, size = 5) +
-  coord_flip() +
+  ggplot2::coord_flip() +
   # Use scale_fill_manual to highlight Milan
-  scale_fill_manual(values = c("Milan"=bv.pink), guide = "none") +
-  scale_x_discrete(name = NULL) +
+  ggplot2::scale_fill_manual(
+    values = c("Milan"=bv.pink), guide = "none") +
+  ggplot2::scale_x_discrete(name = NULL) +
   scale_y_continuvps(
     name = "Flights per year, millions", 
     labels = scales::label_number(scale = 1/1e6),  
     limits = c(0,50e6)) +
-  labs(title="Flights at major international airports")+
+  ggplot2::labs(title="Flights at major international airports")+
   theme_vps_dh()
 ```
 
-<img src="man/figures/README-theme_vps_dh-1.png" width="700px" height="400px" />
+<img src="man/figures/README-theme_vps_dh-1.png" alt="" width="700px" height="400px" />
 
 - [Department of Families, Fairness and
   Housing](https://www.dffh.vic.gov.au/) - `theme_vps_dffh()`.
 
 ``` r
-ggplot(
+ggplot2::ggplot(
   data = line_data, 
-  aes(
+  ggplot2::aes(
     x = year, 
     y = trips,
     fill = Region,
@@ -213,13 +214,13 @@ ggplot(
     )
   ) +
   # Add line chart
-  geom_line() +
+  ggplot2::geom_line() +
    # Add labels using geom_text
-  geom_text(
+  ggplot2::geom_text(
     data = line_data |> 
       # Filter data to only add labels for max(year)
       dplyr::filter(year == max(year)),
-    aes(label = Region), 
+    ggplot2::aes(label = Region), 
     size = 5,
     # Shift to right of x value.
     hjust = -.1) +
@@ -230,27 +231,29 @@ ggplot(
   theme_vps_dffh()
 ```
 
-<img src="man/figures/README-theme_vps_dffh-1.png" width="700px" height="400px" />
+<img src="man/figures/README-theme_vps_dffh-1.png" alt="" width="700px" height="400px" />
 
 - [Department of Justice and COmmunity
   Safety](https://www.justice.vic.gov.au/) - `theme_vps_djcs()`.
 
 ``` r
 # example of multi colour column plot
-ggplot(data = car_accidents, 
-       aes(x = month, 
-           y = accidents, 
-           fill = freeway)) + 
+ggplot2::ggplot(
+  data = car_accidents, 
+  ggplot2::aes(x = month, 
+      y = accidents,
+      fill = freeway)) + 
   # by default multi category columns will be stacked, we can adjust using `position` 
-  geom_col(position = position_dodge()) + 
+  ggplot2::geom_col(
+    position = ggplot2::position_dodge()) + 
   theme_vps_djcs() +
-  scale_x_discrete(name = NULL) + 
+  ggplot2::scale_x_discrete(name = NULL) + 
   scale_y_continuvps(name = "Number of accidents") +
  # Add scale_fill_djcs and specify the navys palette
   scale_fill_djcs(palette = "navys", name = NULL)  
 ```
 
-<img src="man/figures/README-theme_vps_djcs-1.png" width="700px" height="400px" />
+<img src="man/figures/README-theme_vps_djcs-1.png" alt="" width="700px" height="400px" />
 
 The themes at present largely only differ in the background colours that
 can be specified.
@@ -270,31 +273,38 @@ can be specified.
 For example:
 
 ``` r
-ggplot(
+ggplot2::ggplot(
   data = airport_flights, 
-  aes(
+  ggplot2::aes(
     x = reorder(city, flights), 
     y = flights)) +
-  geom_col(aes(fill = city)) +
-  geom_text(
-    aes(label = flights/1e6,
-        colour = city,
-        y = 2e6),
+  ggplot2::geom_col(
+    ggplot2::aes(fill = city)) +
+  ggplot2::geom_text(
+    ggplot2::aes(
+      label = flights/1e6,
+      colour = city,
+      y = 2e6),
     hjust = 1, size = 5) +
-  coord_flip() +
+  ggplot2::coord_flip() +
   # Use scale_fill_manual to highlight Milan
-  scale_fill_manual(values = c("Milan"=bv.charcoal), guide = "none", na.value = bv.smoke) +
-  scale_colour_manual(values = c("Milan" = bv.smoke), guide = "none", na.value = bv.charcoal) +
-  scale_x_discrete(name = NULL) +
+  ggplot2::scale_fill_manual(
+    values = c("Milan"=bv.charcoal), 
+    guide = "none", 
+    na.value = bv.smoke) +
+  ggplot2::scale_colour_manual(
+    values = c("Milan" = bv.smoke), guide = "none", 
+    na.value = bv.charcoal) +
+  ggplot2::scale_x_discrete(name = NULL) +
   scale_y_continuvps(
     name = "Flights per year, millions", 
     labels = scales::label_number(scale = 1/1e6),  
     limits = c(0,50e6)) +
-  labs(title="Flights at major international airports")+
+  ggplot2::labs(title="Flights at major international airports")+
   theme_vps_dh("pink")
 ```
 
-<img src="man/figures/README-theme_vps_dffh_teal-1.png" width="700px" height="400px" />
+<img src="man/figures/README-theme_vps_dffh_teal-1.png" alt="" width="700px" height="400px" />
 
 ### `theme_foundation`
 
