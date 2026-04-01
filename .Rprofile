@@ -11,10 +11,12 @@ local({
   Sys.setenv(
     PATH =
       paste(Sys.getenv("PATH"),
-
-            "C:\\Program Files\\Git\\bin",
-            "C:\\Program Files\\Git\\cmd",
-            "c:\\Program Files\\rtools44\\x86_64-w64-mingw32.static.posix\\bin",
-            "c:\\Program Files\\rtools44\\usr\\bin;C:\\Program Files\\R\\R-4.4.1\\bin\\x64",
-            sep = ";" ))
+          "C:\\Program Files\\Git\\bin",
+          "C:\\Program Files\\Git\\cmd",
+          "C:\\data\\rtools45\\mingw64\\bin",
+          "C:\\data\\rtools45\\usr\\bin",
+          "C:\\data\\rtools45\\x86_64-w64-mingw32.static.posix\\bin",
+          "C:\\Program Files\\R\\R-4.5.3\\bin\\x64",
+          sep = ";" )
+  )
 })

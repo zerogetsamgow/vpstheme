@@ -23,7 +23,7 @@ scale_colour_djcs = function(...,
     switch(
       stringr::str_to_lower(palette),
       "primary" = vpstheme::djcs_colours$primary,
-      "chart" = vpstheme::djcs_colours$combined,
+      "chart" = vpstheme::djcs_colours$chart,
       "navys" = vpstheme::djcs_colours$tints_navy,
       "purples" = vpstheme::djcs_colours$tints_purple,
       "light" = vpstheme::djcs_colours$tints_light
@@ -59,7 +59,7 @@ scale_fill_djcs = function(...,
     switch(
       stringr::str_to_lower(palette),
       "primary" = vpstheme::djcs_colours$primary,
-      "chart" = vpstheme::djcs_colours$combined,
+      "chart" = vpstheme::djcs_colours$chart,
       "navys" = vpstheme::djcs_colours$tints_navy,
       "purples" = vpstheme::djcs_colours$tints_purple,
       "light" = vpstheme::djcs_colours$tints_light
