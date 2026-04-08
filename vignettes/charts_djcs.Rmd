@@ -284,13 +284,13 @@ ggplot(data = car_accidents,
   scale_y_continuvps(name = "Number of accidents") 
 ```
 
-`scale_fill_djcs` allows us to easily specify a palette comprised of departmental style guide compliant colours. We specify the `"navys"` palette in the example below.
+`scale_fill_djcs` allows us to easily specify a palette comprised of departmental style guide compliant colours. We specify the `"purples"` palette in the example below.
 
 
 ``` {r add_scale_fill_djcs, warnings = FALSE, fig.height = 5, fig.width = 7}
 last_plot() +
-  # Add scale_fill_djcs and specify the navys palette
-  scale_fill_djcs(palette = "navys", name = NULL) 
+  # Add scale_fill_djcs and specify the purples palette
+  scale_fill_djcs(palette = "purples", name = NULL) 
 ```
 
 For this example, a legend is required as we use multiple colours. Departmental guidelines recommend legends be placed as close as possible to content, below the title, close to the graph data (for example, at the end of a line) but not cluttering the plot area. Legend and plot margins in `theme_vps_djcs()` have been set to achieve the recommended spacing, but can be adjusted using `theme()`. 
@@ -306,7 +306,7 @@ last_plot() +
  # Change to a stacked bar chart
   geom_col(aes(fill = forcats::fct_rev(freeway)), position = position_stack()) +
   # Reverse oalette so colpours start from the bottom of each column
- # scale_fill_djcs(palette = "navys", name = NULL, reverse = TRUE) +
+ # scale_fill_djcs(palette = "purples", name = NULL, reverse = TRUE) +
   guides(fill = guide_legend(reverse = TRUE))+
   # Move legend tot he right
   theme(legend.position = "right")
@@ -355,7 +355,7 @@ ggplot(
   geom_line() +
   scale_x_continuous(name = NULL)+
   scale_y_continuvps(name = "Number of Trips", limits = c(0,500))+
-  scale_colour_djcs_line(name = NULL, colour = "cobalt") +
+  scale_colour_djcs_line(name = NULL, colour = "cyan") +
   theme_vps_djcs() 
 ```
 
@@ -418,7 +418,7 @@ accident_plot +
 
 ## Other examples (in development).
 
-The examples below show how to highlight one value with labels when using position_dodge  using either `geom_text()` or `facet_grid()`.
+The examples below show how to highlight one value with labels when using position_dodge using either `geom_text()` or `facet_grid()`.
 
 ```{r col_example_text_no_label, warnings = FALSE, fig.height = 5, fig.width = 7}
 ggplot2::ggplot(
@@ -441,7 +441,7 @@ ggplot2::ggplot(
   scale_y_continuous(name = "Number of accidents", expand = c(0,0), limits=c(0,53))+
   # Use scale fill and specify the value you want to highlight and the value to use for others
   # na.value
-  scale_fill_manual(guide = "none", values = c("M3" = bv.navy), na.value = bv.smoke)+
+  scale_fill_manual(guide = "none", values = c("M3" = bv.cerulean), na.value = bv.smoke)+
   # Use scale colour and specify the value you want to highlight and the value to use for others
   # na.value
   scale_colour_manual(guide = "none", values = c("M3" = bv.smoke), na.value = bv.charcoal)+
@@ -462,7 +462,7 @@ ggplot2::ggplot(
   scale_y_continuvps(name = "Number of accidents", limits = c(0,50))+
   # Use scale fill and specify the value you want to highlight and the value to use for others
   # na.value
-  scale_fill_manual(guide = "none", values = c("M3" = bv.navy), na.value = bv.smoke)+
+  scale_fill_manual(guide = "none", values = c("M3" = bv.cerulean), na.value = bv.smoke)+
   labs(title="Annual car accidents on major motor ways",
        subtitle = "Highlight using `facet_grid()` and `scale_fill_manual`.")+
   theme_vps_djcs() +
