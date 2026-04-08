@@ -6,7 +6,7 @@
 \usage{
 scale_colour_djcs(
   ...,
-  palette = c("primary", "chart", "navys", "purples", "light"),
+  palette = c("primary", "chart", "navys", "purples"),
   reverse = FALSE
 )
 }

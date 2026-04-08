@@ -6,7 +6,7 @@
 \usage{
 scale_colour_djcs_line(
   ...,
-  colour = c("navy", "purple", "sky", "cobalt"),
+  colour = c("navy", "cerulean", "cyan", "purple"),
   gradient = FALSE,
   lighten = FALSE
 )

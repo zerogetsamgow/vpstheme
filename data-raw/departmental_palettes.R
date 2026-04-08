@@ -89,28 +89,38 @@ djcs_colours =
     "primary" =
       c(
         bv.navy,
-        bv.sky,
+        bv.cerulean,
+        bv.cyan,
         bv.violet,
-        bv.cobalt,
         bv.charcoal,
         bv.smoke),
-    "chart" =
+    "secondary" =
       c(
-        bv.cerulean,
         bv.royal,
-        bv.navy,
-        bv.purple,
-        bv.sky,
+        bv.azure,
+        bv.teal,
+        bv.plum
+      ),
+    "chart" =
+      c(bv.navy,
+        bv.cerulean,
+        bv.cyan,
         bv.violet,
         bv.charcoal,
+        bv.cobalt,
+        bv.sky,
+        bv.crystal,
+        bv.plum,
         bv.smoke
       ),
     "tints_navy" =
       vpstheme::make_tints(bv.navy),
+    "tints_cerulean" =
+      vpstheme::make_tints(bv.cerulean),
+    "tints_cyan" =
+      vpstheme::make_tints(bv.cyan),
     "tints_purple" =
       vpstheme::make_tints(bv.violet),
-    "tints_cobalt" =
-      vpstheme::make_tints(bv.cobalt),
     "tints_charcoal" =
       vpstheme::make_tints(bv.charcoal)
   )

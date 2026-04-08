@@ -13,7 +13,7 @@
 #' @importFrom stringr str_to_lower
 
 scale_colour_djcs = function(...,
-                           palette = c("primary","chart","navys","purples","light"),
+                           palette = c("primary","chart","navys","purples"),
                            reverse = FALSE) {
 
   if(is.null(palette)) {palette = "primary"}
@@ -25,14 +25,15 @@ scale_colour_djcs = function(...,
       "primary" = vpstheme::djcs_colours$primary,
       "chart" = vpstheme::djcs_colours$chart,
       "navys" = vpstheme::djcs_colours$tints_navy,
-      "purples" = vpstheme::djcs_colours$tints_purple,
-      "light" = vpstheme::djcs_colours$tints_light
+      "purples" = vpstheme::djcs_colours$tints_purple
     )
   # Reverse to get correct order when applied to factored data
   if(reverse) {.palette = rev(.palette)}
 
   return(scale_colour_manual(..., values = .palette))
 }
+
+
 
 #' Department of Justice and Community Safety fill function
 #'
@@ -49,7 +50,7 @@ scale_colour_djcs = function(...,
 #' @importFrom stringr str_to_lower
 
 scale_fill_djcs = function(...,
-                         palette = c("primary","chart","navys","purples","light"),
+                         palette = c("primary","chart","navys","purples"),
                          reverse = FALSE) {
 
   if(is.null(palette)) {palette = "primary"}
@@ -62,7 +63,6 @@ scale_fill_djcs = function(...,
       "chart" = vpstheme::djcs_colours$chart,
       "navys" = vpstheme::djcs_colours$tints_navy,
       "purples" = vpstheme::djcs_colours$tints_purple,
-      "light" = vpstheme::djcs_colours$tints_light
     )
   # Reverse to get correct order when applied to factored data
   if(reverse) {.palette = rev(.palette)}
@@ -94,7 +94,7 @@ scale_fill_djcs = function(...,
 
 scale_colour_djcs_line =
   function(
-    ..., colour = c("navy","purple","sky","cobalt"),
+    ..., colour = c("navy","cerulean","cyan","purple"),
     gradient = FALSE,
     lighten = FALSE) {
 
@@ -105,9 +105,10 @@ scale_colour_djcs_line =
     switch(
       stringr::str_to_lower(colour),
       "navy" = vpstheme::bv.navy,
+      "cerulean" = vpstheme::bv.cerulean,
+      "cyan" = vpstheme::bv.cyan,
       "purple" = vpstheme::bv.violet,
-      "sky" = vpstheme::bv.cobalt,
-      "cobalt" = vpstheme::bv.sky
+
       )
   .secondary = rep(vpstheme::bv.charcoal, 4)
   if(lighten&gradient){stop(message("Only one of lighten or gradient can be chosen."))}
