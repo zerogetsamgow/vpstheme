@@ -7,7 +7,7 @@
 
 This package is in development.
 
-Version 2.6.0 includes useable palettes and themes for the Department of
+Version 2.8.0 includes useable palettes and themes for the Department of
 Health, the Department of Families, Fairness and Housing and the
 Department of Justice and Community Safety as well as a range of helper
 functions, these palettes and themes require refinement.
@@ -38,8 +38,8 @@ You can install the development version of **vpstheme** from
 [GitHub](https://github.com/) with:
 
 ``` r
-# install.packages("devtools")
-devtools::install_github("zerogetsamgow/vpstheme")
+# install.packages("remotes")
+remotes::install_github("zerogetsamgow/vpstheme")
 ```
 
 ## Brand Victoria
