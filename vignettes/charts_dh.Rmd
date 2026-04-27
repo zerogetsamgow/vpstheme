@@ -57,7 +57,7 @@ We can add `theme_vps_dh()` to a plot to implement many of the requirements of t
 ```{r with_theme, fig.width = 7, fig.height = 5}
 # Add theme_vps_dh() to last_plot()
 last_plot() +
-  theme_vps_dh()
+  vpstheme::theme_vps_dh()
 ```
 
 ## 1. Graph titles, subtitles and captions.

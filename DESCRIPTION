@@ -1,7 +1,7 @@
 Package: vpstheme
 Type: Package
 Title: A collection of themes and functions for R users in the VPS
-Version: 2.8.0
+Version: 2.9.0
 Authors@R: c(
     person("Sam", "Gow", email = "sam.gow@gmail.com", role = c("aut", "cre"))
   )
@@ -23,7 +23,8 @@ Imports:
     sysfonts,
     dplyr,
     stringr,
-    colorspace
+    colorspace,
+    curl
 Suggests: 
     knitr,
     forcats,
@@ -32,8 +33,6 @@ Suggests:
     scales,
     rmarkdown,
     testthat (>= 3.0.0),
-    curl,
-    jsonlite,
     remotes
 VignetteBuilder: knitr
 Config/testthat/edition: 3

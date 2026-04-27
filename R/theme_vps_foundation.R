@@ -83,7 +83,7 @@ theme_vps_foundation <- function(base_size = 15, base_family = "Rubik") {
         ggplot2::element_blank(),
       legend.key.size = ggplot2::unit(4,"mm"),
       legend.position = "bottom",
-      legend.box.spacing = unit(2,"mm"),
+      legend.box.spacing = ggplot2::unit(2,"mm"),
       legend.margin = ggplot2::margin(1, 1, 0, 1, "mm"),
       # Define foundation margin parameters
       plot.margin = ggplot2::margin(2, 2, 2, 2, "mm"),

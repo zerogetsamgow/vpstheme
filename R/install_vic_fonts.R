@@ -41,7 +41,12 @@ install_rubik_fonts <- function() {
   # Add fonts
   sysfonts::font_add_google("Rubik")
   # Set as default for geom_text
-  ggplot2::update_geom_defaults("text", list(family = "Rubik", colour = vpstheme::bv.charcoal, size = unit(15,"pt")))
+  ggplot2::update_geom_defaults(
+    "text",
+    list(
+      family = "Rubik",
+      colour = vpstheme::bv.charcoal,
+      size = ggplot2::unit(15,"pt")))
   # Tell R to render text using showtext by calling the showtext_auto() function
   showtext::showtext_auto()
 }
