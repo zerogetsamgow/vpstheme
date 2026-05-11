@@ -25,14 +25,14 @@ coord_vps_map = function(...,
     switch(
       stringr::str_to_lower(extent),
       "victoria" = c(140.55,149.60),
-      "melbourne" = c(144.52,146.12)
+      "melbourne" = c(144.33,146.88)
     )
 
   .ylim =
     switch(
       stringr::str_to_lower(extent),
       "victoria" = c(-33.55,-39.1),
-      "melbourne" = c(-37.43,-38.46)
+      "melbourne" = c(-37.17,-38.50)
     )
 
   # Return coord_sg using limits chosen.
