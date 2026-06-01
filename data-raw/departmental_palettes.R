@@ -113,6 +113,16 @@ djcs_colours =
         bv.plum,
         bv.smoke
       ),
+    "jsr" =
+      c(
+        bv.navy,
+        bv.teal,
+        bv.plum,
+        bv.royal,
+        bv.smoke,
+        bv.butter,
+        bv.charcoal
+      ),
     "tints_navy" =
       vpstheme::make_tints(bv.navy),
     "tints_cerulean" =
