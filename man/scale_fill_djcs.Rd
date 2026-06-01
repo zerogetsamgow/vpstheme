@@ -6,7 +6,7 @@
 \usage{
 scale_fill_djcs(
   ...,
-  palette = c("primary", "chart", "navys", "purples"),
+  palette = c("primary", "chart", "jsr", "navys", "purples"),
   reverse = FALSE
 )
 }

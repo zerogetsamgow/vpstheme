@@ -13,7 +13,7 @@
 #' @importFrom stringr str_to_lower
 
 scale_colour_djcs = function(...,
-                           palette = c("primary","chart","navys","purples"),
+                           palette = c("primary","chart","jsr","navys","purples"),
                            reverse = FALSE) {
 
   if(is.null(palette)) {palette = "primary"}
@@ -24,6 +24,7 @@ scale_colour_djcs = function(...,
       stringr::str_to_lower(palette),
       "primary" = vpstheme::djcs_colours$primary,
       "chart" = vpstheme::djcs_colours$chart,
+      "jsr" = vpstheme::djcs_colours$jsr,
       "navys" = vpstheme::djcs_colours$tints_navy,
       "purples" = vpstheme::djcs_colours$tints_purple
     )
@@ -50,7 +51,7 @@ scale_colour_djcs = function(...,
 #' @importFrom stringr str_to_lower
 
 scale_fill_djcs = function(...,
-                         palette = c("primary","chart","navys","purples"),
+                         palette = c("primary","chart","jsr","navys","purples"),
                          reverse = FALSE) {
 
   if(is.null(palette)) {palette = "primary"}
@@ -61,6 +62,7 @@ scale_fill_djcs = function(...,
       stringr::str_to_lower(palette),
       "primary" = vpstheme::djcs_colours$primary,
       "chart" = vpstheme::djcs_colours$chart,
+      "jsr" = vpstheme::djcs_colours$jsr,
       "navys" = vpstheme::djcs_colours$tints_navy,
       "purples" = vpstheme::djcs_colours$tints_purple,
     )
