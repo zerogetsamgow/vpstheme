@@ -121,7 +121,8 @@ djcs_colours =
         bv.royal,
         bv.smoke,
         bv.butter,
-        bv.charcoal
+        bv.charcoal,
+        bv.jade
       ),
     "tints_navy" =
       vpstheme::make_tints(bv.navy),
