@@ -23,8 +23,7 @@ Imports:
     sysfonts,
     dplyr,
     stringr,
-    colorspace,
-    curl
+    colorspace
 Suggests: 
     knitr,
     forcats,
